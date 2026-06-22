@@ -16,7 +16,10 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      # cPanel SFTP normally starts in /home/bryngels, so this maps to
+      SFTP_HOST: premium24.oderland.com
+      SFTP_USER: bryngels
+      SFTP_PORT: 22
+      # cPanel SFTP starts in /home/bryngels, so this maps to
       # /home/bryngels/el-fix.se on the server.
       REMOTE_PATH: el-fix.se
 
@@ -44,32 +47,25 @@ jobs:
       - name: Install SFTP client
         run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Check SFTP secrets
+      - name: Configure SSH key
         env:
-          SFTP_HOST: ${{ secrets.SFTP_HOST }}
-          SFTP_USER: ${{ secrets.SFTP_USER }}
-          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-          SFTP_PORT: ${{ secrets.SFTP_PORT }}
+          SFTP_PRIVATE_KEY: ${{ secrets.SFTP_PRIVATE_KEY }}
         run: |
-          test -n "$SFTP_HOST"
-          test -n "$SFTP_USER"
-          test -n "$SFTP_PASSWORD"
-          test -n "$SFTP_PORT"
+          test -n "$SFTP_PRIVATE_KEY"
+          mkdir -p "$HOME/.ssh"
+          printf '%s\n' "$SFTP_PRIVATE_KEY" > "$HOME/.ssh/el-fix-github-actions"
+          chmod 600 "$HOME/.ssh/el-fix-github-actions"
 
       - name: Upload out contents to Oderland
-        env:
-          SFTP_HOST: ${{ secrets.SFTP_HOST }}
-          SFTP_USER: ${{ secrets.SFTP_USER }}
-          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
-          SFTP_PORT: ${{ secrets.SFTP_PORT }}
         run: |
           lftp \
-            -u "$SFTP_USER","$SFTP_PASSWORD" \
+            -u "$SFTP_USER","" \
             -p "$SFTP_PORT" \
             "sftp://$SFTP_HOST" <<EOF
           set net:max-retries 3
           set net:timeout 20
           set sftp:auto-confirm yes
+          set sftp:connect-program "ssh -a -x -i $HOME/.ssh/el-fix-github-actions -o StrictHostKeyChecking=accept-new"
           mkdir -p "$REMOTE_PATH"
           cd "$REMOTE_PATH"
           mirror --reverse --delete --delete-first --verbose \
@@ -79,7 +75,7 @@ jobs:
             --exclude-glob "cgi-bin" \
             --exclude-glob "cgi-bin/**" \
             "out/" "."
-          cls -l "index.html"
-          cls -d "_next/static"
+          cls -l "../$REMOTE_PATH/index.html"
+          cls -d "../$REMOTE_PATH/_next/static"
           bye
           EOF
