@@ -67,17 +67,15 @@ jobs:
           set cmd:fail-exit yes
           set sftp:auto-confirm yes
           set sftp:connect-program "ssh -a -x -i $HOME/.ssh/el-fix-github-actions -o StrictHostKeyChecking=accept-new"
-          mkdir -p "$REMOTE_PATH"
+          cd "$REMOTE_PATH"
           mirror --reverse --delete --delete-first --verbose \
             --no-perms \
             --exclude-glob ".well-known" \
             --exclude-glob ".well-known/**" \
             --exclude-glob "cgi-bin" \
             --exclude-glob "cgi-bin/**" \
-            "out/" "$REMOTE_PATH/"
-          cls -l "$REMOTE_PATH/index.html"
-          cls -d "$REMOTE_PATH/_next/static"
-          glob -a cls -l "$REMOTE_PATH/_next/static/chunks/*.css"
-          glob -a cls -l "$REMOTE_PATH/_next/static/chunks/*.js"
+            "out/" "."
+          cls -l index.html
+          cls -d _next/static
           bye
           EOF
