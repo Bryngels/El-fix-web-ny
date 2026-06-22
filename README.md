@@ -37,6 +37,11 @@ Se [DEPLOY.md](./DEPLOY.md) för exakt steg-för-steg-instruktion.
 Kunder kontaktar El-Fix via telefon eller förifylld mejllänk. CTA:erna är
 byggda för att fungera direkt på både mobil och desktop.
 
+## Analytics
+
+Google Analytics 4 laddas via `NEXT_PUBLIC_GA_MEASUREMENT_ID`. Vid automatisk
+deploy till Oderland sätts variabeln i GitHub Actions-workflowen.
+
 ## Namn och bolag
 
 Använd `El-Fix` i löpande text. Använd `El-Fix i Norr AB` när juridisk person
