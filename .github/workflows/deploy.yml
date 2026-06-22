@@ -69,11 +69,15 @@ jobs:
           set net:timeout 20
           set sftp:auto-confirm yes
           mkdir -p "$REMOTE_PATH"
+          cd "$REMOTE_PATH"
           mirror --reverse --delete --delete-first --verbose \
+            --no-perms \
             --exclude-glob ".well-known" \
             --exclude-glob ".well-known/**" \
             --exclude-glob "cgi-bin" \
             --exclude-glob "cgi-bin/**" \
-            "out/" "$REMOTE_PATH/"
+            "out/" "."
+          cls -l "index.html"
+          cls -d "_next/static"
           bye
           EOF
