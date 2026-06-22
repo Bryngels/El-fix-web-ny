@@ -2,18 +2,22 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "El-Fix | Elektriker i Sundsvall",
+  metadataBase: new URL("https://el-fix.se"),
+  title: {
+    default: "El-Fix | Elektriker i Sundsvall",
+    template: "%s",
+  },
   description:
-    "Trygga elinstallationer, service, besiktning och energioptimering i Sundsvall med omnejd.",
+    "Modernt installationsföretag i Sundsvall för elinstallation, service, elbesiktning, laddbox och energioptimering.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
   },
   openGraph: {
-    title: "El-Fix | Riktiga elektriker för trygga installationer",
+    title: "El-Fix | Elektriker i Sundsvall",
     description:
-      "Modern offert- och bokningssida för El-Fix, med GDPR-anpassad leadhantering och smart teknikerbokning.",
-    images: ["/images/el-fix-hero.png"],
+      "Riktiga elektriker för hem, företag, fastigheter och energioptimering i Sundsvall.",
+    images: ["/images/elfix-skatan-solar-work.webp"],
     locale: "sv_SE",
     type: "website",
   },

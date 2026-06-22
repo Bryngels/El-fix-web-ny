@@ -113,18 +113,17 @@ export function ConsentManager() {
   }
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-[#ded6c9] bg-white p-4 shadow-2xl md:p-5">
-      <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-[1fr_auto] md:items-center">
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-[#ded6c9] bg-white p-3 shadow-2xl md:p-5">
+      <div className="mx-auto grid max-w-7xl gap-3 md:grid-cols-[1fr_auto] md:items-center">
         <div>
           <p className="text-sm font-bold text-[#111111]">
-            El-Fix använder samtyckesstyrd förstapartsdata.
+            Samtyckesstyrd förstapartsdata.
           </p>
-          <p className="mt-1 max-w-3xl text-sm leading-6 text-[#555555]">
-            Nödvändiga funktioner kräver inget val. Statistik hjälper oss
-            förstå vilka sidor som leder till förfrågningar. Marknadsföring
-            används bara när du aktivt tillåter uppföljning.
+          <p className="mt-1 max-w-3xl text-xs leading-5 text-[#555555] md:text-sm md:leading-6">
+            Nödvändiga funktioner fungerar alltid. Statistik och marknadsföring
+            används bara om du aktivt väljer det.
           </p>
-          <div className="mt-3 flex flex-col gap-2 text-sm sm:flex-row">
+          <div className="mt-2 flex gap-3 text-xs md:mt-3 md:text-sm">
             <label className="flex items-center gap-2">
               <input
                 type="checkbox"
@@ -143,25 +142,25 @@ export function ConsentManager() {
             </label>
           </div>
         </div>
-        <div className="flex flex-col gap-2 sm:flex-row">
+        <div className="grid grid-cols-3 gap-2">
           <button
             type="button"
             onClick={() => saveChoice({ statistics: false, marketing: false })}
-            className="rounded-md border border-[#d5cec2] px-4 py-3 text-sm font-bold text-[#111111]"
+            className="rounded-md border border-[#d5cec2] px-3 py-3 text-xs font-bold text-[#111111] md:px-4 md:text-sm"
           >
-            Endast nödvändiga
+            Nödvändiga
           </button>
           <button
             type="button"
             onClick={() => saveChoice({ statistics, marketing })}
-            className="rounded-md bg-[#111111] px-4 py-3 text-sm font-bold text-white"
+            className="rounded-md bg-[#111111] px-3 py-3 text-xs font-bold text-white md:px-4 md:text-sm"
           >
             Spara val
           </button>
           <button
             type="button"
             onClick={() => saveChoice({ statistics: true, marketing: true })}
-            className="rounded-md bg-[#f08000] px-4 py-3 text-sm font-bold text-[#111111]"
+            className="rounded-md bg-[#f08000] px-3 py-3 text-xs font-bold text-[#111111] md:px-4 md:text-sm"
           >
             Tillåt alla
           </button>
