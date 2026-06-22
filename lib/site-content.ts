@@ -5,8 +5,12 @@ export const contact = {
   phoneDisplay: "060-17 58 08",
   phoneHref: "tel:060175808",
   email: "info@el-fix.se",
+  emailHref:
+    "mailto:info@el-fix.se?subject=F%C3%B6rfr%C3%A5gan%20via%20el-fix.se&body=Hej%20El-Fix%2C%0A%0AJag%20vill%20ha%20hj%C3%A4lp%20med%3A%0A%0AAdress%20och%20ort%3A%0A%0AN%C3%A4r%20passar%20det%20att%20ni%20kontaktar%20mig%3F%0A%0AMina%20kontaktuppgifter%3A%0A",
   hours: "Måndag-fredag 07.00-16.00",
 };
+
+export const localAreas = ["Sundsvall", "Timrå", "Alnö", "Njurunda", "Matfors"];
 
 export const navItems = [
   { label: "Tjänster", href: "/#tjanster" },
@@ -20,7 +24,7 @@ export const trustItems = [
   "Behöriga elektriker",
   "Medlem i Elkedjan",
   "IN ELTEST",
-  "Lokalt team i Sundsvall",
+  "Lokalt team i Sundsvallsområdet",
 ];
 
 export const serviceCards = [
@@ -123,7 +127,7 @@ export const servicePages: Record<string, ServicePage> = {
       "Arbetet kontrolleras och dokumenteras.",
     ],
     proof: [
-      "Lokalt team i Sundsvall",
+      "Lokalt team i Sundsvall, Timrå, Alnö, Njurunda och Matfors",
       "Medlem i Elkedjan",
       "Mångårig erfarenhet av el, data, tele och säkerhet",
     ],
@@ -136,7 +140,7 @@ export const servicePages: Record<string, ServicePage> = {
       {
         question: "Kan jag få offert innan jobbet startar?",
         answer:
-          "Ja. Skicka in förfrågan med adress, omfattning och gärna bilder så återkommer vi med nästa steg.",
+          "Ja. Mejla eller ring med adress, omfattning och gärna bilder så återkommer vi med nästa steg.",
       },
     ],
   },
@@ -156,11 +160,11 @@ export const servicePages: Record<string, ServicePage> = {
       "Felsökning av elproblem, uttag, centraler och belysning",
       "Service och underhåll av befintliga installationer",
       "Serviceavtal för företag och fastigheter",
-      "Planerade åtgärder med smart rutt- och kalenderbokning",
+      "Planerade åtgärder i Sundsvall, Timrå, Alnö, Njurunda och Matfors",
     ],
     process: [
-      "Du beskriver problemet och hur brådskande det är.",
-      "Vi prioriterar ärendet och matchar tekniker mot område.",
+      "Du beskriver problemet via telefon eller mejl.",
+      "Vi prioriterar ärendet utifrån behov och plats.",
       "Teknikern felsöker, mäter och åtgärdar där det är möjligt.",
       "Du får rekommendation om vidare åtgärder vid behov.",
     ],
@@ -173,7 +177,7 @@ export const servicePages: Record<string, ServicePage> = {
       {
         question: "Kan ni ta brådskande ärenden?",
         answer:
-          "Ja, markera ärendet som brådskande i formuläret eller ring om det behöver hanteras direkt.",
+          "Ring oss om ärendet behöver hanteras snabbt, så kan vi bedöma nästa steg direkt.",
       },
       {
         question: "Erbjuder ni serviceavtal?",
@@ -251,7 +255,7 @@ export const servicePages: Record<string, ServicePage> = {
     proof: [
       "Behöriga elektriker",
       "Samarbete kring kompletta energilösningar",
-      "Lokalt utförande i Sundsvallsområdet",
+      "Lokalt utförande i Sundsvall, Timrå, Alnö, Njurunda och Matfors",
     ],
     faqs: [
       {

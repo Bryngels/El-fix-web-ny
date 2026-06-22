@@ -39,7 +39,7 @@ export function SiteHeader() {
             href="/#forfragan"
             className="rounded-md bg-[#f08000] px-4 py-2 text-sm font-black text-[#111111] shadow-sm transition hover:bg-[#ff9a1f]"
           >
-            Beskriv uppdrag
+            Kontakta oss
           </a>
         </div>
       </div>
@@ -90,7 +90,7 @@ export function SiteFooter() {
               href="/#forfragan"
               className="mt-4 inline-flex rounded-md bg-[#f08000] px-4 py-2 font-black text-[#111111]"
             >
-              Skicka förfrågan
+              Kontakta oss
             </a>
           </div>
         </div>
@@ -101,7 +101,7 @@ export function SiteFooter() {
           href="/#forfragan"
           className="rounded-md bg-[#f08000] px-3 py-3 text-center text-sm font-black text-[#111111]"
         >
-          Beskriv uppdrag
+          Kontakta
         </a>
         <a
           href={contact.phoneHref}
@@ -115,8 +115,8 @@ export function SiteFooter() {
 }
 
 export function CtaBand({
-  title = "Beskriv uppdraget så återkommer vi med nästa steg.",
-  copy = "Skicka plats, behov och prioritet. El-Fix kan sedan bedöma, offerera och planera tekniker smartare.",
+  title = "Ring eller mejla så återkommer vi med nästa steg.",
+  copy = "Skicka plats, behov och prioritet. El-Fix bedömer uppdraget och planerar arbetet utifrån behov och område.",
 }: {
   title?: string;
   copy?: string;
@@ -138,7 +138,13 @@ export function CtaBand({
             href="/#forfragan"
             className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-black text-[#111111]"
           >
-            Starta förfrågan
+            Kontakta oss
+          </a>
+          <a
+            href={contact.emailHref}
+            className="rounded-md border border-white/22 px-5 py-3 text-center text-sm font-bold text-white"
+          >
+            Mejla
           </a>
           <a
             href={contact.phoneHref}

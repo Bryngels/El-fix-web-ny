@@ -1,13 +1,13 @@
 # El-Fix Website
 
 Mål:
-Bygga en modern, snabb och SEO-optimerad hemsida för El-Fix i Östersund.
+Bygga en modern, snabb och SEO-optimerad hemsida för El-Fix i Sundsvall.
 
 Teknik:
 - Statisk webbplats
 - HTML
 - CSS
-- Javascript
+- JavaScript
 - Ingen WordPress
 
 Design:

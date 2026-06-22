@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ConsentManager } from "@/components/consent-manager";
 import { ConversionPanel } from "@/components/conversion-panel";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
-import { audienceCards, contact, serviceCards, trustItems } from "@/lib/site-content";
+import {
+  audienceCards,
+  contact,
+  localAreas,
+  serviceCards,
+  trustItems,
+} from "@/lib/site-content";
 
 export const metadata: Metadata = {
   title: "Elektriker i Sundsvall | El-Fix",
@@ -13,16 +18,16 @@ export const metadata: Metadata = {
 
 const processSteps = [
   {
-    title: "Beskriv behovet",
-    copy: "Välj tjänst, kundtyp, plats och prioritet i ett kort formulär.",
+    title: "Kontakta oss",
+    copy: "Ring eller mejla med plats, tjänst och vad du vill ha hjälp med.",
   },
   {
     title: "Vi bedömer",
-    copy: "El-Fix får strukturerad information för offert, rutt och uppföljning.",
+    copy: "El-Fix bedömer uppdraget och återkommer med nästa steg.",
   },
   {
-    title: "Tekniker planeras",
-    copy: "Tidsönskemål kan matchas mot kalender och när teamet är i området.",
+    title: "Arbetet planeras",
+    copy: "Vi bokar tid och planerar arbetet utifrån behov och område.",
   },
   {
     title: "Arbetet dokumenteras",
@@ -43,7 +48,7 @@ const jsonLd = {
     addressLocality: "Sundsvall",
     addressCountry: "SE",
   },
-  areaServed: "Sundsvall med omnejd",
+  areaServed: localAreas,
 };
 
 export default function Home() {
@@ -87,7 +92,7 @@ export default function Home() {
                 href="#forfragan"
                 className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-black text-[#111111]"
               >
-                Beskriv uppdrag
+                Kontakta oss
               </a>
               <a
                 href={contact.phoneHref}
@@ -138,7 +143,7 @@ export default function Home() {
               />
               <div className="h-11 w-px bg-[#ded6c9]" />
               <div>
-                <p className="text-sm font-black">Sundsvall med omnejd</p>
+                <p className="text-sm font-black">Sundsvall, Timrå, Alnö, Njurunda och Matfors</p>
                 <p className="text-xs text-[#666666]">{contact.street}</p>
               </div>
             </div>
@@ -313,7 +318,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <p className="text-sm font-black text-[#d86f00]">Arbetsflöde</p>
           <h2 className="mt-3 max-w-3xl text-3xl font-black leading-tight md:text-4xl">
-            Byggt för offert, planering och uppföljning.
+            Enkelt att komma vidare utan krångliga system.
           </h2>
           <div className="mt-8 grid gap-4 md:grid-cols-4">
             {processSteps.map((step, index) => (
@@ -332,34 +337,30 @@ export default function Home() {
       <section id="forfragan" className="bg-white px-4 py-12 md:px-8 md:py-16">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.84fr_1.16fr] lg:items-start">
           <div>
-            <p className="text-sm font-black text-[#0f7a5a]">Konvertering</p>
+            <p className="text-sm font-black text-[#0f7a5a]">Kontakt</p>
             <h2 className="mt-3 text-3xl font-black leading-tight md:text-4xl">
-              Offert och teknikerbokning i samma flöde.
+              Snabb väg till offert eller tekniker.
             </h2>
             <p className="mt-5 text-base leading-8 text-[#555555]">
-              Formuläret samlar in rätt information för offert, prioritering,
-              geografisk planering och uppföljning med separata samtycken.
+              Version 1 använder telefon och mejl i stället för webblankett.
+              Det gör det enkelt för kunden att ta kontakt direkt och enkelt
+              för El-Fix att drifta webbplatsen på Oderland.
             </p>
           </div>
           <ConversionPanel />
         </div>
       </section>
 
-      <section id="gdpr" className="bg-[#eaf3ee] px-4 py-12 md:px-8 md:py-16">
+      <section id="omrade" className="bg-[#eaf3ee] px-4 py-12 md:px-8 md:py-16">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
-            <p className="text-sm font-black text-[#0f7a5a]">GDPR och data</p>
+            <p className="text-sm font-black text-[#0f7a5a]">Lokalt område</p>
             <h2 className="mt-3 text-3xl font-black leading-tight md:text-4xl">
-              Förstapartsdata utan att tumma på förtroendet.
+              El-Fix hjälper kunder i rätt del av regionen.
             </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
-            {[
-              "Samtycke för ärendehantering och marknadsföring hålls isär.",
-              "Leads kan skickas vidare till CRM med källa, tjänst och område.",
-              "Bokningsönskemål kan användas för smartare teknikerplanering.",
-              "Nödvändiga funktioner fungerar utan externa trackers.",
-            ].map((item) => (
+            {localAreas.map((item) => (
               <div key={item} className="rounded-lg bg-white p-5 text-sm font-semibold leading-7 shadow-sm">
                 {item}
               </div>
@@ -369,7 +370,6 @@ export default function Home() {
       </section>
 
       <SiteFooter />
-      <ConsentManager />
     </main>
   );
 }

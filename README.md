@@ -1,48 +1,33 @@
-# El-Fix modern site
+# El-Fix statisk webbplats
 
-El-Fix i Norr AB är en installatör med riktiga elektriker och en del i
-Elkedjan.
+Statisk företagshemsida för El-Fix AB. Sidan är byggd för enkel drift på
+Oderland eller annat vanligt webbhotell där färdiga HTML-, CSS-, JavaScript-
+och bildfiler laddas upp med SFTP.
 
-Modern Sites/Vinext-webb för El-Fix med fokus på:
+## Teknik
 
-- professionell och trygg presentation av elinstallation, service, besiktning,
-  laddbox, solenergi och energioptimering
-- enkla offert- och bokningsflöden för kunder
-- GDPR-anpassad förstapartsdata med separata samtycken för statistik och
-  marknadsföring
-- D1-lagring av leads, bokningsönskemål, samtycken och besökshändelser
-- valfria webhooks till CRM, kalender och analys
+- Next.js med statisk export till `out/`
+- React-komponenter för enkel framtida redigering
+- Tailwind CSS via Next-byggkedjan
+- Kontakt via telefon och förifylld mejllänk i version 1
 
 ## Kommandon
 
 ```bash
 npm install
 npm run dev
-npm run db:generate
 npm run lint
 npm run build
 ```
 
-## Miljövariabler
+Efter `npm run build` ligger den publicerbara webbplatsen i `out/`.
 
-Lokalt finns nycklarna i `.env.example`. I Sites ska runtime-värden sättas via
-miljövariabelhantering, inte i `.openai/hosting.json`.
+## Drift
 
-- `CRM_WEBHOOK_URL`: tar emot offertförfrågningar och bokningsleads
-- `CALENDAR_WEBHOOK_URL`: tar emot bokningsönskemål och rutt-/kalenderdata
-- `ANALYTICS_WEBHOOK_URL`: valfri spegling av samtyckesstyrd statistik
+Ladda upp innehållet i `out/` till webbrooten hos Oderland enligt
+instruktionen i `DEPLOY.md`.
 
-## Data
+## Kontaktflöde
 
-`.openai/hosting.json` deklarerar D1-bindningen `DB`. Schema finns i
-`db/schema.ts` och migreringar i `drizzle/`.
-
-Tabeller:
-
-- `leads`
-- `booking_requests`
-- `consent_records`
-- `visitor_events`
-
-Besöksstatistik lagrar inte IP-adress. Marknadsföringsuppföljning kräver
-aktivt samtycke.
+Kunder kontaktar El-Fix via telefon eller förifylld mejllänk. CTA:erna är
+byggda för att fungera direkt på både mobil och desktop.

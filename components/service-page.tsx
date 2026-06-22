@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
 import type { ServicePage } from "@/lib/site-content";
-import { contact } from "@/lib/site-content";
+import { contact, localAreas } from "@/lib/site-content";
 import { CtaBand, SiteFooter, SiteHeader } from "@/components/site-chrome";
 
 export function ServicePageTemplate({ service }: { service: ServicePage }) {
@@ -22,7 +22,7 @@ export function ServicePageTemplate({ service }: { service: ServicePage }) {
         addressCountry: "SE",
       },
     },
-    areaServed: "Sundsvall med omnejd",
+    areaServed: localAreas,
   };
 
   return (
@@ -50,7 +50,13 @@ export function ServicePageTemplate({ service }: { service: ServicePage }) {
                 href="/#forfragan"
                 className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-black text-[#111111]"
               >
-                Beskriv uppdrag
+                Kontakta oss
+              </a>
+              <a
+                href={contact.emailHref}
+                className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
+              >
+                Mejla
               </a>
               <a
                 href={contact.phoneHref}

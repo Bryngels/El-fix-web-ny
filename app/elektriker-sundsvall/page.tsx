@@ -53,7 +53,13 @@ export default function ElektrikerSundsvallPage() {
                 href="/#forfragan"
                 className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-black text-[#111111]"
               >
-                Beskriv uppdrag
+                Kontakta oss
+              </a>
+              <a
+                href={contact.emailHref}
+                className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
+              >
+                Mejla förfrågan
               </a>
               <a
                 href={contact.phoneHref}
@@ -83,8 +89,8 @@ export default function ElektrikerSundsvallPage() {
           </div>
           <div>
             <p className="text-sm text-white/62">Område</p>
-            <p className="mt-1 text-xl font-black">Sundsvall med omnejd</p>
-            <p className="text-sm text-white/72">Planerade jobb kan ruttmatchas smartare.</p>
+            <p className="mt-1 text-xl font-black">Sundsvall, Timrå, Alnö, Njurunda och Matfors</p>
+            <p className="text-sm text-white/72">Lokalt team med utgångspunkt på Björneborgsgatan.</p>
           </div>
           <div>
             <p className="text-sm text-white/62">Kontakt</p>
@@ -138,7 +144,7 @@ export default function ElektrikerSundsvallPage() {
 
       <CtaBand
         title="Söker du elektriker i Sundsvall?"
-        copy="Beskriv jobbet, adressen och hur brådskande det är. Vi återkommer med rätt nästa steg."
+        copy="Ring eller mejla jobbet, adressen och hur brådskande det är. Vi återkommer med rätt nästa steg."
       />
       <SiteFooter />
     </main>
