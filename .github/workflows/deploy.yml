@@ -75,6 +75,9 @@ jobs:
             --exclude-glob "cgi-bin" \
             --exclude-glob "cgi-bin/**" \
             "out/" "."
+          chmod 755 _next
+          chmod 755 _next/static
+          chmod 755 _next/static/chunks
           cls -l index.html
           cls -d _next/static
           bye
