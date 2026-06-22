@@ -57,10 +57,18 @@ export default function Home() {
       <header className="fixed inset-x-0 top-0 z-40 border-b border-white/18 bg-[#111111]/78 text-white backdrop-blur-md">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-8">
           <a href="#start" className="flex items-center gap-3" aria-label="El-Fix startsida">
-            <span className="grid h-10 w-10 place-items-center rounded-md bg-[#f2c94c] text-sm font-black text-[#111111]">
-              EF
+            <span className="rounded-md bg-white px-3 py-2 shadow-sm">
+              <Image
+                src="/images/el-fix-logo.png"
+                alt="El-Fix"
+                width={259}
+                height={93}
+                priority
+                unoptimized
+                className="h-9 w-auto md:h-10"
+              />
             </span>
-            <span>
+            <span className="sr-only">
               <span className="block text-base font-semibold">El-Fix</span>
               <span className="block text-xs text-white/72">
                 Elektriker i Sundsvall
@@ -83,7 +91,7 @@ export default function Home() {
           </nav>
           <a
             href="#forfragan"
-            className="rounded-md bg-[#f2c94c] px-4 py-2 text-sm font-semibold text-[#111111] shadow-sm transition hover:bg-[#ffdb63]"
+            className="rounded-md bg-[#f08000] px-4 py-2 text-sm font-semibold text-[#111111] shadow-sm transition hover:bg-[#ff9a1f]"
           >
             Begär offert
           </a>
@@ -120,7 +128,7 @@ export default function Home() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
                 href="#forfragan"
-                className="rounded-md bg-[#f2c94c] px-5 py-3 text-center text-sm font-bold text-[#111111] transition hover:bg-[#ffdb63]"
+                className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-bold text-[#111111] transition hover:bg-[#ff9a1f]"
               >
                 Starta förfrågan
               </a>
@@ -162,7 +170,7 @@ export default function Home() {
               gett samtycke.
             </p>
             <dl className="mt-8 grid gap-4 sm:grid-cols-3">
-              <div className="border-l-4 border-[#f2c94c] pl-4">
+              <div className="border-l-4 border-[#f08000] pl-4">
                 <dt className="text-2xl font-black">1</dt>
                 <dd className="mt-1 text-sm text-[#555555]">
                   formulär för offert
@@ -221,7 +229,7 @@ export default function Home() {
             />
           </div>
           <div>
-            <p className="text-sm font-bold text-[#f2c94c]">
+            <p className="text-sm font-bold text-[#f08000]">
               Kompletta energilösningar
             </p>
             <h2 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
@@ -316,10 +324,17 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-8 px-5 md:px-8 lg:grid-cols-[1fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-md bg-[#f2c94c] text-sm font-black text-[#111111]">
-                EF
+              <span className="rounded-md bg-white px-3 py-2 shadow-sm">
+                <Image
+                  src="/images/el-fix-logo.png"
+                  alt="El-Fix"
+                  width={259}
+                  height={93}
+                  unoptimized
+                  className="h-10 w-auto"
+                />
               </span>
-              <span className="text-lg font-bold">El-Fix</span>
+              <span className="sr-only text-lg font-bold">El-Fix</span>
             </div>
             <p className="mt-4 text-sm leading-7 text-white/72">
               Professionell elservice, installation och energioptimering i
@@ -344,7 +359,7 @@ export default function Home() {
             <p>Måndag-Fredag 07.00-16.00</p>
             <a
               href="#forfragan"
-              className="mt-4 inline-block rounded-md bg-[#f2c94c] px-4 py-2 font-bold text-[#111111]"
+              className="mt-4 inline-block rounded-md bg-[#f08000] px-4 py-2 font-bold text-[#111111]"
             >
               Skicka förfrågan
             </a>

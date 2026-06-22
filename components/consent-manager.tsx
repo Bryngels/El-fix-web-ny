@@ -161,7 +161,7 @@ export function ConsentManager() {
           <button
             type="button"
             onClick={() => saveChoice({ statistics: true, marketing: true })}
-            className="rounded-md bg-[#f2c94c] px-4 py-3 text-sm font-bold text-[#111111]"
+            className="rounded-md bg-[#f08000] px-4 py-3 text-sm font-bold text-[#111111]"
           >
             Tillåt alla
           </button>
