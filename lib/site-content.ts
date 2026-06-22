@@ -1,5 +1,5 @@
 export const contact = {
-  name: "El-Fix AB",
+  name: "El-Fix i Norr AB",
   street: "Björneborgsgatan 49",
   postalCity: "854 61 Sundsvall",
   phoneDisplay: "060-17 58 08",

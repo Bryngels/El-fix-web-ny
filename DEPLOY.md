@@ -49,7 +49,7 @@ Exempel med Cyberduck, FileZilla eller Transmit:
 4. Ta bort gamla webbplatsfiler i webbrooten. Radera inte systemmappar eller
    filer som Oderland uttryckligen kräver.
 5. Öppna den lokala mappen `out/`.
-6. Markera allt innehåll i `out/`.
+6. Markera allt innehåll i `out/`, även dolda filer som `.htaccess`.
 7. Ladda upp filerna och mapparna till webbrooten.
 
 Viktigt: ladda upp innehållet i `out/`, inte själva `out`-mappen.

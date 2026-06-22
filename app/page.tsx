@@ -182,9 +182,9 @@ export default function Home() {
               El-Fix ska kännas som det självklara, trygga valet.
             </h2>
             <p className="mt-5 text-base leading-8 text-[#555555]">
-              Därför lyfter sajten fram riktiga installationer, tydliga
-              processer, behörighet och dokumentation. Målet är att besökaren
-              snabbt ska förstå vad som händer före, under och efter uppdraget.
+              Du får se riktiga installationer, tydliga processer, behörighet
+              och dokumentation. Det ska vara enkelt att förstå vad som händer
+              före, under och efter uppdraget.
             </p>
           </div>
         </div>
@@ -342,9 +342,9 @@ export default function Home() {
               Snabb väg till offert eller tekniker.
             </h2>
             <p className="mt-5 text-base leading-8 text-[#555555]">
-              Version 1 använder telefon och mejl i stället för webblankett.
-              Det gör det enkelt för kunden att ta kontakt direkt och enkelt
-              för El-Fix att drifta webbplatsen på Oderland.
+              Ring eller mejla direkt med plats, behov och prioritet. Då kan
+              El-Fix snabbt bedöma nästa steg och återkomma med offert eller
+              tid med tekniker.
             </p>
           </div>
           <ConversionPanel />

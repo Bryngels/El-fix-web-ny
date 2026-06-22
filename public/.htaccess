@@ -1,0 +1,18 @@
+RewriteEngine On
+
+# Gamla eller sannolika adresser till nya statiska sidor.
+RedirectMatch 301 ^/kontakt/?$ /#forfragan
+RedirectMatch 301 ^/offert/?$ /#forfragan
+RedirectMatch 301 ^/tjanster/?$ /#tjanster
+RedirectMatch 301 ^/elinstallation(er)?/?$ /tjanster/elinstallation/
+RedirectMatch 301 ^/elservice/?$ /tjanster/service-felsokning/
+RedirectMatch 301 ^/felsokning/?$ /tjanster/service-felsokning/
+RedirectMatch 301 ^/felsökning/?$ /tjanster/service-felsokning/
+RedirectMatch 301 ^/elbesiktning/?$ /tjanster/elbesiktning/
+RedirectMatch 301 ^/laddbox(ar)?/?$ /tjanster/laddbox/
+RedirectMatch 301 ^/elbilsladdning/?$ /tjanster/laddbox/
+RedirectMatch 301 ^/elbilsladdare/?$ /tjanster/laddbox/
+RedirectMatch 301 ^/solceller/?$ /#energi
+RedirectMatch 301 ^/energioptimering/?$ /#energi
+
+ErrorDocument 404 /404.html

@@ -3,7 +3,7 @@ import { contact, localAreas, serviceCards } from "@/lib/site-content";
 export function ConversionPanel() {
   return (
     <div className="rounded-lg border border-[#ded6c9] bg-[#fbfaf7] p-4 shadow-xl md:p-6">
-      <p className="text-sm font-black text-[#0f7a5a]">Kontakt i version 1</p>
+      <p className="text-sm font-black text-[#0f7a5a]">Direktkontakt</p>
       <h3 className="mt-3 text-2xl font-black leading-tight">
         Ring eller mejla El-Fix så återkommer vi med nästa steg.
       </h3>
