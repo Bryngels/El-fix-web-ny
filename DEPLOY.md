@@ -21,6 +21,12 @@ out/
 
 Det är innehållet i `out/` som ska laddas upp.
 
+Kontrollera lokalt att mappen finns:
+
+```bash
+ls out
+```
+
 ## 2. Hämta SFTP-uppgifter i Oderland
 
 Logga in i Oderlands kundzon eller cPanel och kontrollera:

@@ -22,12 +22,25 @@ npm run build
 
 Efter `npm run build` ligger den publicerbara webbplatsen i `out/`.
 
-## Drift
+## Publicering på Oderland
 
-Ladda upp innehållet i `out/` till webbrooten hos Oderland enligt
-instruktionen i `DEPLOY.md`.
+1. Kör `npm install`.
+2. Kör `npm run lint`.
+3. Kör `npm run build`.
+4. Öppna mappen `out/`.
+5. Ladda upp innehållet i `out/` till webbrooten för `el-fix.se` via SFTP.
+
+Se [DEPLOY.md](./DEPLOY.md) för exakt steg-för-steg-instruktion.
 
 ## Kontaktflöde
 
 Kunder kontaktar El-Fix via telefon eller förifylld mejllänk. CTA:erna är
 byggda för att fungera direkt på både mobil och desktop.
+
+## Viktiga filer
+
+- `app/` innehåller sidorna.
+- `components/` innehåller återanvändbara sidsektioner.
+- `lib/site-content.ts` innehåller tjänster, kontaktuppgifter och lokala orter.
+- `public/images/` innehåller logotyper och bilder.
+- `out/` skapas vid build och är mappen som publiceras.
