@@ -1,0 +1,79 @@
+name: Deploy static site to Oderland
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-oderland
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and deploy
+    runs-on: ubuntu-latest
+
+    env:
+      REMOTE_PATH: /home/bryngels/el-fix.se
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static export
+        run: npm run build
+
+      - name: Verify static export
+        run: |
+          test -f out/index.html
+          test -d out/_next/static
+
+      - name: Install SFTP client
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Check SFTP secrets
+        env:
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          SFTP_PORT: ${{ secrets.SFTP_PORT }}
+        run: |
+          test -n "$SFTP_HOST"
+          test -n "$SFTP_USER"
+          test -n "$SFTP_PASSWORD"
+          test -n "$SFTP_PORT"
+
+      - name: Upload out contents to Oderland
+        env:
+          SFTP_HOST: ${{ secrets.SFTP_HOST }}
+          SFTP_USER: ${{ secrets.SFTP_USER }}
+          SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+          SFTP_PORT: ${{ secrets.SFTP_PORT }}
+        run: |
+          lftp \
+            -u "$SFTP_USER","$SFTP_PASSWORD" \
+            -p "$SFTP_PORT" \
+            "sftp://$SFTP_HOST" <<EOF
+          set net:max-retries 3
+          set net:timeout 20
+          set sftp:auto-confirm yes
+          mkdir -p "$REMOTE_PATH"
+          mirror --reverse --delete --delete-first --verbose \
+            --exclude-glob ".well-known" \
+            --exclude-glob ".well-known/**" \
+            --exclude-glob "cgi-bin" \
+            --exclude-glob "cgi-bin/**" \
+            "out/" "$REMOTE_PATH/"
+          bye
+          EOF

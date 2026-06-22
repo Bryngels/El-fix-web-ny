@@ -49,7 +49,8 @@ Exempel med Cyberduck, FileZilla eller Transmit:
 4. Ta bort gamla webbplatsfiler i webbrooten. Radera inte systemmappar eller
    filer som Oderland uttryckligen kräver.
 5. Öppna den lokala mappen `out/`.
-6. Markera allt innehåll i `out/`, även dolda filer som `.htaccess`.
+6. Markera allt innehåll i `out/`, även dolda filer som `.htaccess` och
+   mappar som börjar med understreck, särskilt `_next/`.
 7. Ladda upp filerna och mapparna till webbrooten.
 
 Viktigt: ladda upp innehållet i `out/`, inte själva `out`-mappen.
@@ -71,6 +72,16 @@ https://el-fix.se/tjanster/elbesiktning/
 https://el-fix.se/tjanster/laddbox/
 https://el-fix.se/elektriker-sundsvall/
 ```
+
+Kontrollera också att CSS och JavaScript från Next-exporten går att nå:
+
+```text
+https://el-fix.se/_next/static/chunks/
+```
+
+Om sidan laddar HTML och bilder men saknar styling, saknas ofta `_next/` i
+webbrooten eller så har mappen för snäva filrättigheter. Kör `npm run build`
+igen och ladda upp hela innehållet i `out/`, inklusive `_next/`.
 
 Om en undersida ger 404, kontrollera att hela mappstrukturen från `out/` har
 laddats upp och att filerna `index.html` finns kvar i respektive mapp.
