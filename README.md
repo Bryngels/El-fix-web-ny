@@ -1,5 +1,8 @@
 # El-Fix modern site
 
+El-Fix i Norr AB är en installatör med riktiga elektriker och en del i
+Elkedjan.
+
 Modern Sites/Vinext-webb för El-Fix med fokus på:
 
 - professionell och trygg presentation av elinstallation, service, besiktning,
