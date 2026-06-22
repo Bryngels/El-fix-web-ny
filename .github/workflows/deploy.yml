@@ -16,7 +16,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      REMOTE_PATH: /home/bryngels/el-fix.se
+      # cPanel SFTP normally starts in /home/bryngels, so this maps to
+      # /home/bryngels/el-fix.se on the server.
+      REMOTE_PATH: el-fix.se
 
     steps:
       - name: Check out repository
