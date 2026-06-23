@@ -5,7 +5,7 @@ import { servicePages } from "@/lib/site-content";
 const service = servicePages["laddbox"];
 
 export const metadata: Metadata = {
-  title: "Installera laddbox Sundsvall | El-Fix",
+  title: service.metaTitle,
   description: service.description,
 };
 

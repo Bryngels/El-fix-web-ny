@@ -14,7 +14,7 @@ export const localAreas = ["Sundsvall", "Timrå", "Alnö", "Njurunda", "Matfors"
 
 export const navItems = [
   { label: "Tjänster", href: "/#tjanster" },
-  { label: "Företag", href: "/#foretag" },
+  { label: "Företag & BRF", href: "/foretag-brf/" },
   { label: "Energi", href: "/#energi" },
   { label: "Elbesiktning", href: "/tjanster/elbesiktning/" },
   { label: "Elektriker Sundsvall", href: "/elektriker-sundsvall/" },
@@ -88,9 +88,14 @@ export const audienceCards = [
 export type ServicePage = {
   slug: string;
   eyebrow: string;
+  metaTitle: string;
   title: string;
   description: string;
   intro: string;
+  problem: string;
+  solution: string;
+  nextStep: string;
+  localCopy: string;
   image: {
     src: string;
     alt: string;
@@ -105,11 +110,20 @@ export const servicePages: Record<string, ServicePage> = {
   "elinstallation": {
     slug: "elinstallation",
     eyebrow: "Elinstallation",
+    metaTitle: "Elinstallation Sundsvall | El-Fix",
     title: "Elinstallation i Sundsvall för hem, företag och fastigheter",
     description:
       "Trygga elinstallationer i Sundsvall med behöriga elektriker, tydlig planering och dokumenterat utfört arbete.",
     intro:
       "El-Fix hjälper till med nya installationer, kompletteringar, centraler, belysning och uppgraderingar där arbetet behöver bli rätt från början.",
+    problem:
+      "Många eljobb startar med osäkerhet: vad behöver göras, vad är säkert, och hur påverkas resten av bostaden eller verksamheten?",
+    solution:
+      "Vi går igenom förutsättningarna, föreslår en praktisk lösning och utför installationen med behöriga elektriker, kontroll och dokumentation.",
+    nextStep:
+      "Ring eller mejla adress, typ av installation och gärna bilder på elcentral eller platsen där arbetet ska utföras.",
+    localCopy:
+      "Vi utför elinstallationer i Sundsvall, Timrå, Alnö, Njurunda och Matfors med utgångspunkt från Björneborgsgatan.",
     image: {
       src: "/images/elkedjan-installation-cabinet.webp",
       alt: "Noggrann elinstallation i elcentral",
@@ -147,11 +161,20 @@ export const servicePages: Record<string, ServicePage> = {
   "service-felsokning": {
     slug: "service-felsokning",
     eyebrow: "Service & felsökning",
-    title: "Felsökning och elservice i Sundsvall",
+    metaTitle: "Elservice och felsökning Sundsvall | El-Fix",
+    title: "Elservice och felsökning i Sundsvall",
     description:
-      "Elservice, felsökning och underhåll i Sundsvall för hem, företag och fastigheter.",
+      "Elservice och felsökning i Sundsvall, Timrå, Alnö, Njurunda och Matfors när säkringar går, jordfelsbrytare löser ut eller drift störs.",
     intro:
-      "När något inte fungerar behövs snabb diagnos, rätt åtgärd och tydlig återkoppling. El-Fix felsöker, mäter och dokumenterar så du vet vad som hänt och vad som bör göras.",
+      "När elen inte fungerar behövs snabb diagnos, rätt åtgärd och tydlig återkoppling. El-Fix felsöker, mäter och dokumenterar så du vet vad som hänt och vad som bör göras.",
+    problem:
+      "Säkringar går, jordfelsbrytaren löser ut, belysning blinkar eller en lokal får driftstopp. Felet kan sitta i centralen, installationen, utrustningen eller belastningen.",
+    solution:
+      "Vi felsöker metodiskt med mätning, kontroll av elanläggningen och tydlig prioritering. Där det är möjligt åtgärdar vi direkt, annars får du konkret rekommendation och offert.",
+    nextStep:
+      "Ring om ärendet är brådskande. Vid planerad service: mejla plats, problem, när felet uppstår och gärna bilder på central eller berörd installation.",
+    localCopy:
+      "Vi hjälper privatpersoner, företag och fastighetsägare i Sundsvall, Timrå, Alnö, Njurunda och Matfors.",
     image: {
       src: "/images/elkedjan-industrial-service.webp",
       alt: "Elektriker felsöker installation i teknisk miljö",
@@ -189,11 +212,20 @@ export const servicePages: Record<string, ServicePage> = {
   "elbesiktning": {
     slug: "elbesiktning",
     eyebrow: "IN ELTEST",
-    title: "Elbesiktning i Sundsvall med protokoll och tydliga priser",
+    metaTitle: "Elbesiktning Sundsvall | IN ELTEST | El-Fix",
+    title: "Elbesiktning i Sundsvall med IN ELTEST och protokoll",
     description:
-      "Boka elbesiktning i Sundsvall. El-Fix utför IN ELTEST med kontroll av central, jordfelsbrytare, uttag, kablar och protokoll.",
+      "Boka elbesiktning i Sundsvall, Timrå, Alnö, Njurunda och Matfors. El-Fix utför IN ELTEST med protokoll och tydlig åtgärdsbedömning.",
     intro:
       "En elanläggning kan ha fel som inte syns. Med IN ELTEST får du en strukturerad genomgång av elsäkerheten och ett protokoll som visar om något behöver åtgärdas.",
+    problem:
+      "Vid husköp, försäljning, renovering eller äldre elanläggningar är det svårt att veta om installationen är säker och korrekt dokumenterad.",
+    solution:
+      "Vi kontrollerar central, jordfelsbrytare, säkringar, uttag, kablar, dosor och strömbrytare enligt IN ELTEST och sammanställer resultatet i ett protokoll.",
+    nextStep:
+      "Mejla adress, bostadstyp, ungefärlig storlek och om det finns flera elcentraler. Vi återkommer med bokningsförslag och prisbild.",
+    localCopy:
+      "Elbesiktning utförs i Sundsvall med omnejd, inklusive Timrå, Alnö, Njurunda och Matfors.",
     image: {
       src: "/images/elkedjan-elbesiktning-detail.webp",
       alt: "Detaljkontroll av säkringar vid elbesiktning",
@@ -231,11 +263,20 @@ export const servicePages: Record<string, ServicePage> = {
   "laddbox": {
     slug: "laddbox",
     eyebrow: "Laddbox",
-    title: "Installera laddbox i Sundsvall",
+    metaTitle: "Installera laddbox Sundsvall | El-Fix",
+    title: "Laddbox i Sundsvall för villa, BRF och företag",
     description:
-      "Installation av laddbox i Sundsvall för villa, BRF och företag med säker elinstallation och rätt dimensionering.",
+      "Installera laddbox i Sundsvall, Timrå, Alnö, Njurunda och Matfors. El-Fix hjälper villa, BRF och företag med säker installation och lastbalansering.",
     intro:
       "En laddbox ska vara säker, rätt dimensionerad och anpassad till elanläggningen. El-Fix hjälper till från bedömning till installation och uppföljning.",
+    problem:
+      "Fel laddlösning kan ge onödiga kostnader, överbelastning eller laddning som inte räcker för vardagen. För BRF och företag blir även kapacitet, debitering och framtida utbyggnad viktiga.",
+    solution:
+      "Vi kontrollerar elcentral, säkring och kapacitet, rekommenderar laddbox och lastbalansering vid behov och installerar så lösningen fungerar med fastighetens förutsättningar.",
+    nextStep:
+      "Mejla adress, antal bilar eller laddplatser, huvudsäkring och gärna bilder på elcentralen. Ring om du vill få en snabb första bedömning.",
+    localCopy:
+      "Vi installerar laddboxar i Sundsvall, Timrå, Alnö, Njurunda och Matfors och kan samordna laddning med solenergi och energioptimering.",
     image: {
       src: "/images/elkedjan-laddbox-car.webp",
       alt: "Installerad laddbox vid bostad med elbil",

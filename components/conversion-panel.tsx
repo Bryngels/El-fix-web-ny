@@ -1,3 +1,4 @@
+import { TrackedLink } from "@/components/tracked-link";
 import { contact, localAreas, serviceCards } from "@/lib/site-content";
 
 export function ConversionPanel() {
@@ -14,18 +15,24 @@ export function ConversionPanel() {
       </p>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
-        <a
+        <TrackedLink
           href={contact.phoneHref}
+          eventName="phone_click"
+          eventLocation="conversion-panel"
+          eventLabel={`Ring ${contact.phoneDisplay}`}
           className="rounded-md bg-[#111111] px-5 py-4 text-center text-sm font-black text-white"
         >
           Ring {contact.phoneDisplay}
-        </a>
-        <a
+        </TrackedLink>
+        <TrackedLink
           href={contact.emailHref}
+          eventName="email_click"
+          eventLocation="conversion-panel"
+          eventLabel="Mejla förfrågan"
           className="rounded-md bg-[#f08000] px-5 py-4 text-center text-sm font-black text-[#111111]"
         >
           Mejla förfrågan
-        </a>
+        </TrackedLink>
       </div>
 
       <div className="mt-6 rounded-md bg-white p-4">
@@ -42,13 +49,16 @@ export function ConversionPanel() {
         <p className="font-black">Vanliga tjänster</p>
         <div className="flex flex-wrap gap-2">
           {serviceCards.map((service) => (
-            <a
+            <TrackedLink
               key={service.href}
               href={service.href}
+              eventName="cta_click"
+              eventLocation="conversion-panel-services"
+              eventLabel={service.title}
               className="rounded-md border border-[#ded6c9] px-3 py-2 font-semibold text-[#333333]"
             >
               {service.title}
-            </a>
+            </TrackedLink>
           ))}
         </div>
       </div>

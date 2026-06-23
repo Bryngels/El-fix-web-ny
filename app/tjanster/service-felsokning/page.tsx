@@ -5,7 +5,7 @@ import { servicePages } from "@/lib/site-content";
 const service = servicePages["service-felsokning"];
 
 export const metadata: Metadata = {
-  title: "Felsökning och elservice Sundsvall | El-Fix",
+  title: service.metaTitle,
   description: service.description,
 };
 

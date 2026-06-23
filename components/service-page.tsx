@@ -1,8 +1,8 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
 import type { ServicePage } from "@/lib/site-content";
 import { contact, localAreas } from "@/lib/site-content";
 import { CtaBand, SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { TrackedLink } from "@/components/tracked-link";
 
 export function ServicePageTemplate({ service }: { service: ServicePage }) {
   const jsonLd = {
@@ -46,24 +46,33 @@ export function ServicePageTemplate({ service }: { service: ServicePage }) {
               {service.intro}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
+              <TrackedLink
                 href="/#forfragan"
+                eventName="cta_click"
+                eventLocation={`${service.slug}-hero`}
+                eventLabel="Kontakta oss"
                 className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-black text-[#111111]"
               >
                 Kontakta oss
-              </a>
-              <a
+              </TrackedLink>
+              <TrackedLink
                 href={contact.emailHref}
+                eventName="email_click"
+                eventLocation={`${service.slug}-hero`}
+                eventLabel="Mejla"
                 className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
               >
                 Mejla
-              </a>
-              <a
+              </TrackedLink>
+              <TrackedLink
                 href={contact.phoneHref}
+                eventName="phone_click"
+                eventLocation={`${service.slug}-hero`}
+                eventLabel={`Ring ${contact.phoneDisplay}`}
                 className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
               >
                 Ring {contact.phoneDisplay}
-              </a>
+              </TrackedLink>
             </div>
           </div>
 
@@ -90,6 +99,21 @@ export function ServicePageTemplate({ service }: { service: ServicePage }) {
               </dl>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="border-y border-[#e8e1d6] bg-[#fbfaf7] px-4 py-10 md:px-8">
+        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
+          {[
+            ["Problem", service.problem],
+            ["Lösning", service.solution],
+            ["Nästa steg", service.nextStep],
+          ].map(([title, copy]) => (
+            <article key={title} className="rounded-lg bg-white p-5 shadow-sm">
+              <h2 className="text-lg font-black">{title}</h2>
+              <p className="mt-3 text-sm leading-7 text-[#555555]">{copy}</p>
+            </article>
+          ))}
         </div>
       </section>
 
@@ -133,6 +157,22 @@ export function ServicePageTemplate({ service }: { service: ServicePage }) {
                   {step}
                 </p>
               </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#eaf3ee] px-4 py-10 md:px-8">
+        <div className="mx-auto max-w-7xl rounded-lg bg-white p-5 shadow-sm md:p-6">
+          <p className="text-sm font-black text-[#0f7a5a]">Lokalt utförande</p>
+          <p className="mt-3 max-w-4xl text-base leading-8 text-[#555555]">
+            {service.localCopy}
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {localAreas.map((area) => (
+              <span key={area} className="rounded-md bg-[#f7f5f0] px-3 py-2 text-sm font-bold">
+                {area}
+              </span>
             ))}
           </div>
         </div>

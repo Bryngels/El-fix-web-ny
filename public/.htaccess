@@ -4,6 +4,9 @@ RewriteEngine On
 RedirectMatch 301 ^/kontakt/?$ /#forfragan
 RedirectMatch 301 ^/offert/?$ /#forfragan
 RedirectMatch 301 ^/tjanster/?$ /#tjanster
+RedirectMatch 301 ^/foretag/?$ /foretag-brf/
+RedirectMatch 301 ^/brf/?$ /foretag-brf/
+RedirectMatch 301 ^/bostadsrattsforening/?$ /foretag-brf/
 RedirectMatch 301 ^/elinstallation(er)?/?$ /tjanster/elinstallation/
 RedirectMatch 301 ^/elservice/?$ /tjanster/service-felsokning/
 RedirectMatch 301 ^/felsokning/?$ /tjanster/service-felsokning/

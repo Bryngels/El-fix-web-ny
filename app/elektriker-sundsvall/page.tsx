@@ -1,12 +1,12 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
 import type { Metadata } from "next";
 import { CtaBand, SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { TrackedLink } from "@/components/tracked-link";
 import { audienceCards, contact, serviceCards, trustItems } from "@/lib/site-content";
 
 export const metadata: Metadata = {
-  title: "Elektriker Sundsvall | El-Fix",
+  title: "Elektriker Sundsvall, Timrå och Alnö | El-Fix",
   description:
-    "Elektriker i Sundsvall för elinstallation, felsökning, elbesiktning, laddbox och energioptimering. Lokalt team på Björneborgsgatan.",
+    "Behöver du elektriker i Sundsvall? El-Fix hjälper Sundsvall, Timrå, Alnö, Njurunda och Matfors med felsökning, laddbox, elbesiktning och installation.",
 };
 
 export default function ElektrikerSundsvallPage() {
@@ -41,32 +41,42 @@ export default function ElektrikerSundsvallPage() {
               Lokal elektriker
             </p>
             <h1 className="mt-4 max-w-4xl text-4xl font-black leading-[1.03] md:text-6xl">
-              Elektriker i Sundsvall med fokus på trygghet, teknik och energi.
+              Elektriker i Sundsvall när jobbet ska vara tryggt, dokumenterat och rätt gjort.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-[#555555] md:text-lg">
-              El-Fix hjälper privatpersoner, företag, BRF:er och fastighetsägare
-              med installation, service, felsökning, elbesiktning och smartare
-              energilösningar.
+              El-Fix utgår från Björneborgsgatan och hjälper privatpersoner,
+              företag, BRF:er och fastighetsägare i Sundsvall, Timrå, Alnö,
+              Njurunda och Matfors med felsökning, installation, laddbox,
+              elbesiktning och energiåtgärder.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
+              <TrackedLink
                 href="/#forfragan"
+                eventName="cta_click"
+                eventLocation="elektriker-sundsvall-hero"
+                eventLabel="Beskriv ditt ärende"
                 className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-black text-[#111111]"
               >
-                Kontakta oss
-              </a>
-              <a
+                Beskriv ditt ärende
+              </TrackedLink>
+              <TrackedLink
                 href={contact.emailHref}
+                eventName="email_click"
+                eventLocation="elektriker-sundsvall-hero"
+                eventLabel="Mejla förfrågan"
                 className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
               >
                 Mejla förfrågan
-              </a>
-              <a
+              </TrackedLink>
+              <TrackedLink
                 href={contact.phoneHref}
+                eventName="phone_click"
+                eventLocation="elektriker-sundsvall-hero"
+                eventLabel={`Ring ${contact.phoneDisplay}`}
                 className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
               >
                 Ring {contact.phoneDisplay}
-              </a>
+              </TrackedLink>
             </div>
           </div>
 
@@ -94,11 +104,43 @@ export default function ElektrikerSundsvallPage() {
           </div>
           <div>
             <p className="text-sm text-white/62">Kontakt</p>
-            <a className="mt-1 block text-xl font-black" href={contact.phoneHref}>
+            <TrackedLink
+              className="mt-1 block text-xl font-black"
+              href={contact.phoneHref}
+              eventName="phone_click"
+              eventLocation="elektriker-sundsvall-local-band"
+              eventLabel={contact.phoneDisplay}
+            >
               {contact.phoneDisplay}
-            </a>
+            </TrackedLink>
             <p className="text-sm text-white/72">{contact.email}</p>
           </div>
+        </div>
+      </section>
+
+      <section className="border-b border-[#e8e1d6] bg-[#fbfaf7] px-4 py-10 md:px-8">
+        <div className="mx-auto grid max-w-7xl gap-4 md:grid-cols-3">
+          <article className="rounded-lg bg-white p-5 shadow-sm">
+            <h2 className="text-lg font-black">Problem</h2>
+            <p className="mt-3 text-sm leading-7 text-[#555555]">
+              Du behöver veta om felet är akut, om installationen är säker eller
+              vad som krävs för att få en offert som går att lita på.
+            </p>
+          </article>
+          <article className="rounded-lg bg-white p-5 shadow-sm">
+            <h2 className="text-lg font-black">Lösning</h2>
+            <p className="mt-3 text-sm leading-7 text-[#555555]">
+              El-Fix bedömer uppdraget, skickar rätt elektriker och återkopplar
+              med tydliga rekommendationer, dokumentation och nästa steg.
+            </p>
+          </article>
+          <article className="rounded-lg bg-white p-5 shadow-sm">
+            <h2 className="text-lg font-black">Nästa steg</h2>
+            <p className="mt-3 text-sm leading-7 text-[#555555]">
+              Ring för snabb bedömning eller mejla adress, ort, bilder och vad
+              du vill ha hjälp med.
+            </p>
+          </article>
         </div>
       </section>
 
@@ -110,14 +152,17 @@ export default function ElektrikerSundsvallPage() {
           </h2>
           <div className="mt-8 grid gap-4 md:grid-cols-4">
             {serviceCards.map((service) => (
-              <a
+              <TrackedLink
                 key={service.href}
                 href={service.href}
+                eventName="cta_click"
+                eventLocation="elektriker-sundsvall-services"
+                eventLabel={service.title}
                 className="rounded-lg border border-[#ded6c9] bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
               >
                 <h3 className="text-xl font-black">{service.title}</h3>
                 <p className="mt-4 text-sm leading-7 text-[#555555]">{service.copy}</p>
-              </a>
+              </TrackedLink>
             ))}
           </div>
         </div>

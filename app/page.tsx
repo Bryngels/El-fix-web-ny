@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { ConversionPanel } from "@/components/conversion-panel";
 import { SiteFooter, SiteHeader } from "@/components/site-chrome";
+import { TrackedLink } from "@/components/tracked-link";
 import {
   audienceCards,
   contact,
@@ -11,27 +12,27 @@ import {
 } from "@/lib/site-content";
 
 export const metadata: Metadata = {
-  title: "Elektriker i Sundsvall | El-Fix",
+  title: "Elektriker i Sundsvall för service, laddbox och elbesiktning | El-Fix",
   description:
-    "El-Fix är ett modernt installationsföretag i Sundsvall för elinstallation, service, elbesiktning, laddbox och energioptimering.",
+    "El-Fix hjälper hem, företag och BRF:er i Sundsvall, Timrå, Alnö, Njurunda och Matfors med elservice, laddbox, elbesiktning och installation.",
 };
 
 const processSteps = [
   {
     title: "Kontakta oss",
-    copy: "Ring eller mejla med plats, tjänst och vad du vill ha hjälp med.",
+    copy: "Ring eller mejla adress, ort och vad som behöver lösas.",
   },
   {
     title: "Vi bedömer",
-    copy: "El-Fix bedömer uppdraget och återkommer med nästa steg.",
+    copy: "Vi avgör om det behövs felsökning, offertunderlag eller bokad tid.",
   },
   {
     title: "Arbetet planeras",
-    copy: "Vi bokar tid och planerar arbetet utifrån behov och område.",
+    copy: "Du får tydlig planering utifrån uppdrag, område och tillgänglighet.",
   },
   {
     title: "Arbetet dokumenteras",
-    copy: "Du får tydlig återkoppling och rekommendationer för nästa steg.",
+    copy: "Utfört arbete kontrolleras och du får återkoppling om nästa steg.",
   },
 ];
 
@@ -64,15 +65,17 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
           <div>
             <p className="inline-flex rounded-md border border-[#eaded0] bg-[#fff8ef] px-3 py-2 text-sm font-black text-[#b45600]">
-              Riktiga elektriker. Trygga installationer. Smartare energi.
+              Behöriga elektriker från Björneborgsgatan i Sundsvall
             </p>
             <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[1.03] md:text-6xl">
-              Modern elpartner i Sundsvall för hem, företag och energioptimering.
+              Elektriker i Sundsvall för felsökning, laddbox, elbesiktning och installation.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-[#555555] md:text-lg">
-              El-Fix kombinerar lokal elkompetens med strukturerad planering,
-              dokumenterat arbete och kompletta lösningar tillsammans med
-              Elkedjan, Bryngels och Hedlert.
+              El-Fix hjälper villaägare, BRF:er, fastighetsägare och företag
+              med tydlig bedömning, säkert utförande och dokumenterat arbete.
+              Som del av Elkedjan och med nära samarbete med Bryngels och
+              Hedlert kan vi också samordna större lösningar för laddning,
+              solenergi och energioptimering.
             </p>
             <div className="mt-7 overflow-hidden rounded-lg border border-[#ded6c9] bg-[#111111] shadow-sm lg:hidden">
               <div className="relative aspect-[16/10]">
@@ -88,18 +91,33 @@ export default function Home() {
               </div>
             </div>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
+              <TrackedLink
                 href="#forfragan"
+                eventName="cta_click"
+                eventLocation="home-hero"
+                eventLabel="Beskriv ditt elärende"
                 className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-black text-[#111111]"
               >
-                Kontakta oss
-              </a>
-              <a
+                Beskriv ditt elärende
+              </TrackedLink>
+              <TrackedLink
                 href={contact.phoneHref}
+                eventName="phone_click"
+                eventLocation="home-hero"
+                eventLabel={`Ring ${contact.phoneDisplay}`}
                 className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
               >
                 Ring {contact.phoneDisplay}
-              </a>
+              </TrackedLink>
+              <TrackedLink
+                href={contact.emailHref}
+                eventName="email_click"
+                eventLocation="home-hero"
+                eventLabel="Mejla förfrågan"
+                className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
+              >
+                Mejla förfrågan
+              </TrackedLink>
             </div>
           </div>
 
@@ -127,8 +145,8 @@ export default function Home() {
                   ))}
                 </div>
                 <p className="mt-5 max-w-md text-sm font-semibold leading-6 text-white/86">
-                  Egna projekt, behöriga elektriker och planering som fungerar
-                  för både hem, fastigheter och företag.
+                  Dokumenterat utförande, behöriga elektriker och planering som
+                  fungerar för både hem, fastigheter och företag.
                 </p>
               </div>
             </div>
@@ -179,13 +197,21 @@ export default function Home() {
           <div>
             <p className="text-sm font-black text-[#d86f00]">Lokalt projektbevis</p>
             <h2 className="mt-3 text-3xl font-black leading-tight md:text-4xl">
-              El-Fix ska kännas som det självklara, trygga valet.
+              Därför väljer kunder El-Fix när elen måste bli rätt.
             </h2>
             <p className="mt-5 text-base leading-8 text-[#555555]">
-              Du får se riktiga installationer, tydliga processer, behörighet
-              och dokumentation. Det ska vara enkelt att förstå vad som händer
-              före, under och efter uppdraget.
+              Vi kombinerar lokalt ansvar med tydlig dokumentation, registrerade
+              elektriker, Elkedjans kvalitetstänk och erfarenhet från både hem,
+              fastigheter och verksamheter. Du ska förstå vad som görs, varför
+              det görs och vad nästa steg blir.
             </p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-3">
+              {["Dokumenterat arbete", "Behöriga elektriker", "Medlem i Elkedjan"].map((item) => (
+                <div key={item} className="rounded-lg border border-[#ded6c9] bg-[#fbfaf7] p-4 text-sm font-black">
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -194,13 +220,16 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <p className="text-sm font-black text-[#0f7a5a]">Tjänster</p>
           <h2 className="mt-3 max-w-3xl text-3xl font-black leading-tight md:text-4xl">
-            Välj rätt väg direkt.
+            Välj rätt hjälp för ditt elärende.
           </h2>
           <div className="mt-8 grid gap-4 md:grid-cols-4">
             {serviceCards.map((service) => (
-              <a
+              <TrackedLink
                 key={service.href}
                 href={service.href}
+                eventName="cta_click"
+                eventLocation="home-services"
+                eventLabel={service.title}
                 className="overflow-hidden rounded-lg border border-[#ded6c9] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
               >
                 <div className="relative aspect-[4/3] bg-[#111111]">
@@ -217,7 +246,7 @@ export default function Home() {
                   <h3 className="text-xl font-black">{service.title}</h3>
                   <p className="mt-4 text-sm leading-7 text-[#555555]">{service.copy}</p>
                 </div>
-              </a>
+              </TrackedLink>
             ))}
           </div>
         </div>
@@ -228,13 +257,23 @@ export default function Home() {
           <div>
             <p className="text-sm font-black text-[#2f6f9f]">För företag och fastighet</p>
             <h2 className="mt-3 text-3xl font-black leading-tight md:text-4xl">
-              Service som fungerar i pågående verksamhet.
+              Elservice som fungerar i pågående verksamhet och fastigheter.
             </h2>
             <p className="mt-5 text-base leading-8 text-[#555555]">
-              El-Fix har erfarenhet av installation, service, underhåll och
-              projektledning där drift, tydlig kommunikation och dokumentation
-              spelar roll.
+              Företag, BRF:er och fastighetsägare behöver eljobb som stör så
+              lite som möjligt, blir rätt dokumenterade och går att följa upp.
+              El-Fix hjälper med service, underhåll, laddplatser, besiktning och
+              projekt där drift och tydlig kommunikation spelar roll.
             </p>
+            <TrackedLink
+              href="/foretag-brf/"
+              eventName="cta_click"
+              eventLocation="home-business-section"
+              eventLabel="Läs om företag och BRF"
+              className="mt-6 inline-flex rounded-md bg-[#111111] px-5 py-3 text-sm font-black text-white"
+            >
+              Läs om företag och BRF
+            </TrackedLink>
           </div>
           <div className="grid gap-3 sm:grid-cols-3">
             {["Serviceavtal", "Projektledning", "Dokumentation"].map((item) => (
