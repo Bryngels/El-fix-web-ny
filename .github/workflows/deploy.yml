@@ -23,6 +23,7 @@ jobs:
       # /home/bryngels/el-fix.se on the server.
       REMOTE_PATH: el-fix.se
       NEXT_PUBLIC_GA_MEASUREMENT_ID: G-YQJMRKG40X
+      NEXT_PUBLIC_GTM_CONTAINER_ID: GTM-N3T5JQ55
 
     steps:
       - name: Check out repository

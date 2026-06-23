@@ -11,7 +11,7 @@ type GtagArgs =
 
 declare global {
   interface Window {
-    dataLayer?: GtagArgs[];
+    dataLayer?: unknown[];
     gtag?: (...args: GtagArgs) => void;
   }
 }

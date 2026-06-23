@@ -35,6 +35,13 @@ export function TrackedLink({
       link_text: linkText,
       link_location: eventLocation,
     });
+
+    window.dataLayer?.push({
+      event: eventName,
+      link_url: href,
+      link_text: linkText,
+      link_location: eventLocation,
+    });
   };
 
   return (
