@@ -11,7 +11,7 @@ type GtagArgs =
 
 declare global {
   interface Window {
-    dataLayer?: unknown[];
+    dataLayer?: Array<Record<string, unknown> | IArguments>;
     gtag?: (...args: GtagArgs) => void;
   }
 }

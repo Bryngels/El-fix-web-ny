@@ -82,7 +82,7 @@ export default function ForetagBrfPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <TrackedLink
                 href={contact.phoneHref}
-                eventName="phone_click"
+                eventName="click_phone"
                 eventLocation="foretag-brf-hero"
                 eventLabel={`Ring ${contact.phoneDisplay}`}
                 className="rounded-md bg-[#111111] px-5 py-3 text-center text-sm font-black text-white"
@@ -91,9 +91,11 @@ export default function ForetagBrfPage() {
               </TrackedLink>
               <TrackedLink
                 href={contact.emailHref}
-                eventName="email_click"
+                eventName="click_email"
+                additionalEvents={["click_contact", "generate_lead"]}
                 eventLocation="foretag-brf-hero"
                 eventLabel="Mejla uppdrag"
+                eventContext="business-email-lead"
                 className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-black text-[#111111]"
               >
                 Mejla uppdrag

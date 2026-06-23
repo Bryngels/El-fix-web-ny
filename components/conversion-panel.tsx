@@ -17,7 +17,7 @@ export function ConversionPanel() {
       <div className="mt-6 grid gap-3 sm:grid-cols-2">
         <TrackedLink
           href={contact.phoneHref}
-          eventName="phone_click"
+          eventName="click_phone"
           eventLocation="conversion-panel"
           eventLabel={`Ring ${contact.phoneDisplay}`}
           className="rounded-md bg-[#111111] px-5 py-4 text-center text-sm font-black text-white"
@@ -26,9 +26,11 @@ export function ConversionPanel() {
         </TrackedLink>
         <TrackedLink
           href={contact.emailHref}
-          eventName="email_click"
+          eventName="click_email"
+          additionalEvents={["click_quote", "generate_lead"]}
           eventLocation="conversion-panel"
           eventLabel="Mejla förfrågan"
+          eventContext="conversion-panel-email-lead"
           className="rounded-md bg-[#f08000] px-5 py-4 text-center text-sm font-black text-[#111111]"
         >
           Mejla förfrågan
@@ -52,9 +54,10 @@ export function ConversionPanel() {
             <TrackedLink
               key={service.href}
               href={service.href}
-              eventName="cta_click"
+              eventName="click_contact"
               eventLocation="conversion-panel-services"
               eventLabel={service.title}
+              eventContext="service-navigation"
               className="rounded-md border border-[#ded6c9] px-3 py-2 font-semibold text-[#333333]"
             >
               {service.title}

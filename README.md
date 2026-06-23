@@ -39,8 +39,13 @@ byggda för att fungera direkt på både mobil och desktop.
 
 ## Analytics
 
-Google Analytics 4 laddas via `NEXT_PUBLIC_GA_MEASUREMENT_ID`. Vid automatisk
-deploy till Oderland sätts variabeln i GitHub Actions-workflowen.
+Google Analytics 4 laddas via `NEXT_PUBLIC_GA_MEASUREMENT_ID`. Google Tag
+Manager laddas via `NEXT_PUBLIC_GTM_CONTAINER_ID`. Vid automatisk deploy till
+Oderland sätts variablerna i GitHub Actions-workflowen.
+
+CTA:er och kontaktlänkar skickar dataLayer-event för GTM med konsekventa
+eventnamn: `click_phone`, `click_email`, `click_quote`, `click_contact` och
+`generate_lead`.
 
 ## Namn och bolag
 

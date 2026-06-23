@@ -48,25 +48,28 @@ export function ServicePageTemplate({ service }: { service: ServicePage }) {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <TrackedLink
                 href="/#forfragan"
-                eventName="cta_click"
+                eventName="click_quote"
                 eventLocation={`${service.slug}-hero`}
                 eventLabel="Kontakta oss"
+                eventContext="service-hero-primary"
                 className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-black text-[#111111]"
               >
                 Kontakta oss
               </TrackedLink>
               <TrackedLink
                 href={contact.emailHref}
-                eventName="email_click"
+                eventName="click_email"
+                additionalEvents={["click_quote", "generate_lead"]}
                 eventLocation={`${service.slug}-hero`}
                 eventLabel="Mejla"
+                eventContext="service-hero-email-lead"
                 className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
               >
                 Mejla
               </TrackedLink>
               <TrackedLink
                 href={contact.phoneHref}
-                eventName="phone_click"
+                eventName="click_phone"
                 eventLocation={`${service.slug}-hero`}
                 eventLabel={`Ring ${contact.phoneDisplay}`}
                 className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"

@@ -93,16 +93,17 @@ export default function Home() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <TrackedLink
                 href="#forfragan"
-                eventName="cta_click"
+                eventName="click_quote"
                 eventLocation="home-hero"
                 eventLabel="Beskriv ditt elärende"
+                eventContext="home-hero-primary"
                 className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-black text-[#111111]"
               >
                 Beskriv ditt elärende
               </TrackedLink>
               <TrackedLink
                 href={contact.phoneHref}
-                eventName="phone_click"
+                eventName="click_phone"
                 eventLocation="home-hero"
                 eventLabel={`Ring ${contact.phoneDisplay}`}
                 className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
@@ -111,9 +112,11 @@ export default function Home() {
               </TrackedLink>
               <TrackedLink
                 href={contact.emailHref}
-                eventName="email_click"
+                eventName="click_email"
+                additionalEvents={["click_quote", "generate_lead"]}
                 eventLocation="home-hero"
                 eventLabel="Mejla förfrågan"
+                eventContext="home-hero-email-lead"
                 className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
               >
                 Mejla förfrågan
@@ -227,9 +230,10 @@ export default function Home() {
               <TrackedLink
                 key={service.href}
                 href={service.href}
-                eventName="cta_click"
+                eventName="click_contact"
                 eventLocation="home-services"
                 eventLabel={service.title}
+                eventContext="service-navigation"
                 className="overflow-hidden rounded-lg border border-[#ded6c9] bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
               >
                 <div className="relative aspect-[4/3] bg-[#111111]">
@@ -267,9 +271,10 @@ export default function Home() {
             </p>
             <TrackedLink
               href="/foretag-brf/"
-              eventName="cta_click"
+              eventName="click_contact"
               eventLocation="home-business-section"
               eventLabel="Läs om företag och BRF"
+              eventContext="business-navigation"
               className="mt-6 inline-flex rounded-md bg-[#111111] px-5 py-3 text-sm font-black text-white"
             >
               Läs om företag och BRF

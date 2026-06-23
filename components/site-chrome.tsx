@@ -32,7 +32,7 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <TrackedLink
             href={contact.phoneHref}
-            eventName="phone_click"
+            eventName="click_phone"
             eventLocation="site-header"
             eventLabel={contact.phoneDisplay}
             className="hidden rounded-md border border-[#ded6c9] px-4 py-2 text-sm font-bold text-[#151515] md:inline-flex"
@@ -41,9 +41,10 @@ export function SiteHeader() {
           </TrackedLink>
           <TrackedLink
             href="/#forfragan"
-            eventName="cta_click"
+            eventName="click_contact"
             eventLocation="site-header"
             eventLabel="Kontakta oss"
+            eventContext="header-primary-cta"
             className="rounded-md bg-[#f08000] px-4 py-2 text-sm font-black text-[#111111] shadow-sm transition hover:bg-[#ff9a1f]"
           >
             Kontakta oss
@@ -84,7 +85,7 @@ export function SiteFooter() {
             <TrackedLink
               className="text-white hover:underline"
               href={contact.phoneHref}
-              eventName="phone_click"
+              eventName="click_phone"
               eventLocation="site-footer"
               eventLabel={contact.phoneDisplay}
             >
@@ -94,7 +95,7 @@ export function SiteFooter() {
             <TrackedLink
               className="text-white hover:underline"
               href={`mailto:${contact.email}`}
-              eventName="email_click"
+              eventName="click_email"
               eventLocation="site-footer"
               eventLabel={contact.email}
             >
@@ -107,9 +108,10 @@ export function SiteFooter() {
             <p>{contact.hours}</p>
             <TrackedLink
               href="/#forfragan"
-              eventName="cta_click"
+              eventName="click_contact"
               eventLocation="site-footer"
               eventLabel="Kontakta oss"
+              eventContext="footer-primary-cta"
               className="mt-4 inline-flex rounded-md bg-[#f08000] px-4 py-2 font-black text-[#111111]"
             >
               Kontakta oss
@@ -121,16 +123,17 @@ export function SiteFooter() {
       <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 border-t border-black/10 bg-white p-2 shadow-2xl md:hidden">
         <TrackedLink
           href="/#forfragan"
-          eventName="cta_click"
+          eventName="click_contact"
           eventLocation="mobile-sticky"
           eventLabel="Kontakta"
+          eventContext="mobile-sticky-contact"
           className="rounded-md bg-[#f08000] px-3 py-3 text-center text-sm font-black text-[#111111]"
         >
           Kontakta
         </TrackedLink>
         <TrackedLink
           href={contact.phoneHref}
-          eventName="phone_click"
+          eventName="click_phone"
           eventLocation="mobile-sticky"
           eventLabel="Ring"
           className="ml-2 rounded-md bg-[#111111] px-3 py-3 text-center text-sm font-black text-white"
@@ -164,25 +167,29 @@ export function CtaBand({
         <div className="flex flex-col gap-3 sm:flex-row">
           <TrackedLink
             href="/#forfragan"
-            eventName="cta_click"
+            eventName="click_contact"
+            additionalEvents={["click_quote"]}
             eventLocation="cta-band"
             eventLabel="Kontakta oss"
+            eventContext="cta-band-primary"
             className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-black text-[#111111]"
           >
             Kontakta oss
           </TrackedLink>
           <TrackedLink
             href={contact.emailHref}
-            eventName="email_click"
+            eventName="click_email"
+            additionalEvents={["click_quote", "generate_lead"]}
             eventLocation="cta-band"
             eventLabel="Mejla"
+            eventContext="cta-band-email-lead"
             className="rounded-md border border-white/22 px-5 py-3 text-center text-sm font-bold text-white"
           >
             Mejla
           </TrackedLink>
           <TrackedLink
             href={contact.phoneHref}
-            eventName="phone_click"
+            eventName="click_phone"
             eventLocation="cta-band"
             eventLabel={`Ring ${contact.phoneDisplay}`}
             className="rounded-md border border-white/22 px-5 py-3 text-center text-sm font-bold text-white"

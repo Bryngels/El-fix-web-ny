@@ -5,6 +5,7 @@ import {
   GoogleTagManagerHead,
   GoogleTagManagerNoScript,
 } from "@/components/google-tag-manager";
+import { TrackingRuntime } from "@/components/tracking-runtime";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -42,6 +43,7 @@ export default function RootLayout({
       <body>
         <GoogleTagManagerNoScript />
         {children}
+        <TrackingRuntime />
         <Suspense fallback={null}>
           <GoogleAnalytics />
         </Suspense>

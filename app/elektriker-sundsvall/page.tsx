@@ -52,25 +52,28 @@ export default function ElektrikerSundsvallPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <TrackedLink
                 href="/#forfragan"
-                eventName="cta_click"
+                eventName="click_quote"
                 eventLocation="elektriker-sundsvall-hero"
                 eventLabel="Beskriv ditt ärende"
+                eventContext="local-hero-primary"
                 className="rounded-md bg-[#f08000] px-5 py-3 text-center text-sm font-black text-[#111111]"
               >
                 Beskriv ditt ärende
               </TrackedLink>
               <TrackedLink
                 href={contact.emailHref}
-                eventName="email_click"
+                eventName="click_email"
+                additionalEvents={["click_quote", "generate_lead"]}
                 eventLocation="elektriker-sundsvall-hero"
                 eventLabel="Mejla förfrågan"
+                eventContext="local-hero-email-lead"
                 className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
               >
                 Mejla förfrågan
               </TrackedLink>
               <TrackedLink
                 href={contact.phoneHref}
-                eventName="phone_click"
+                eventName="click_phone"
                 eventLocation="elektriker-sundsvall-hero"
                 eventLabel={`Ring ${contact.phoneDisplay}`}
                 className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
@@ -107,7 +110,7 @@ export default function ElektrikerSundsvallPage() {
             <TrackedLink
               className="mt-1 block text-xl font-black"
               href={contact.phoneHref}
-              eventName="phone_click"
+              eventName="click_phone"
               eventLocation="elektriker-sundsvall-local-band"
               eventLabel={contact.phoneDisplay}
             >
@@ -155,9 +158,10 @@ export default function ElektrikerSundsvallPage() {
               <TrackedLink
                 key={service.href}
                 href={service.href}
-                eventName="cta_click"
+                eventName="click_contact"
                 eventLocation="elektriker-sundsvall-services"
                 eventLabel={service.title}
+                eventContext="service-navigation"
                 className="rounded-lg border border-[#ded6c9] bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
               >
                 <h3 className="text-xl font-black">{service.title}</h3>
