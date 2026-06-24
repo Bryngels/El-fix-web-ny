@@ -34,8 +34,9 @@ Se [DEPLOY.md](./DEPLOY.md) för exakt steg-för-steg-instruktion.
 
 ## Kontaktflöde
 
-Kunder kontaktar El-Fix via telefon eller förifylld mejllänk. CTA:erna är
-byggda för att fungera direkt på både mobil och desktop.
+Kunder kontaktar El-Fix via telefon, förifylld mejllänk eller ett enkelt
+statiskt kontaktformulär. Formuläret använder ingen databas eller backend utan
+skickar användaren till `/tack/` efter submit.
 
 ## Analytics
 
@@ -45,7 +46,8 @@ Oderland sätts variablerna i GitHub Actions-workflowen.
 
 CTA:er och kontaktlänkar skickar dataLayer-event för GTM med konsekventa
 eventnamn: `click_phone`, `click_email`, `click_quote`, `click_contact` och
-`generate_lead`.
+`generate_lead`. Tack-sidan `/tack/` är `noindex` och kan användas som
+kompletterande konverteringssida i GA4.
 
 ## Namn och bolag
 

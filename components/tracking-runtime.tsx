@@ -23,6 +23,18 @@ export function TrackingRuntime() {
         return;
       }
 
+      const thankYouUrl = form.dataset.thankYouUrl;
+      const formData = new FormData(form);
+      let hasNavigated = false;
+      const navigateToThanks = () => {
+        if (!thankYouUrl || hasNavigated) {
+          return;
+        }
+
+        hasNavigated = true;
+        window.location.href = thankYouUrl;
+      };
+
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: "generate_lead",
@@ -30,7 +42,15 @@ export function TrackingRuntime() {
         form_name: form.getAttribute("name") || undefined,
         form_location: form.dataset.gtmLocation || form.dataset.analyticsLocation,
         form_context: form.dataset.gtmContext,
+        lead_service: formData.get("arende") || undefined,
+        event_callback: navigateToThanks,
+        event_timeout: 900,
       });
+
+      if (thankYouUrl) {
+        event.preventDefault();
+        window.setTimeout(navigateToThanks, 900);
+      }
     };
 
     document.addEventListener("submit", handleSubmit);

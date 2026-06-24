@@ -1,3 +1,4 @@
+import { LeadForm } from "@/components/lead-form";
 import { TrackedLink } from "@/components/tracked-link";
 import { contact, localAreas, serviceCards } from "@/lib/site-content";
 
@@ -37,15 +38,7 @@ export function ConversionPanel() {
         </TrackedLink>
       </div>
 
-      <div className="mt-6 rounded-md bg-white p-4">
-        <p className="text-sm font-black">Bra att få med i mejlet</p>
-        <ul className="mt-3 grid gap-2 text-sm leading-6 text-[#555555]">
-          <li>Adress och ort</li>
-          <li>Typ av uppdrag eller problem</li>
-          <li>Om det gäller privatbostad, företag, BRF eller fastighet</li>
-          <li>Telefonnummer och när du vill bli kontaktad</li>
-        </ul>
-      </div>
+      <LeadForm />
 
       <div className="mt-4 grid gap-3 rounded-md bg-white p-4 text-sm">
         <p className="font-black">Vanliga tjänster</p>
