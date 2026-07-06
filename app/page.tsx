@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Elektriker i Sundsvall för service, laddbox och elbesiktning | El-Fix",
   description:
-    "El-Fix hjälper hem, företag och BRF:er i Sundsvall, Timrå, Alnö, Njurunda och Matfors med elservice, laddbox, elbesiktning och installation.",
+    "El-Fix hjälper hem, företag och BRF:er i Sundsvallsområdet med elservice, laddbox, elbesiktning och installation.",
 };
 
 const processSteps = [
@@ -64,19 +64,25 @@ export default function Home() {
       <section className="overflow-hidden bg-white px-4 py-12 md:px-8 md:py-20">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
           <div>
-            <p className="inline-flex rounded-md border border-[#eaded0] bg-[#fff8ef] px-3 py-2 text-sm font-black text-[#b45600]">
-              Behöriga elektriker från Björneborgsgatan i Sundsvall
+            <p className="text-sm font-black text-[#b45600]">
+              Lokalt installationsföretag från Björneborgsgatan
             </p>
             <h1 className="mt-5 max-w-4xl text-4xl font-black leading-[1.03] md:text-6xl">
-              Elektriker i Sundsvall för felsökning, laddbox, elbesiktning och installation.
+              Elektriker i Sundsvall när jobbet måste bli rätt.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-[#555555] md:text-lg">
-              El-Fix hjälper villaägare, BRF:er, fastighetsägare och företag
-              med tydlig bedömning, säkert utförande och dokumenterat arbete.
-              Som del av Elkedjan och med nära samarbete med Bryngels och
-              Hedlert kan vi också samordna större lösningar för laddning,
-              solenergi och energioptimering.
+              El-Fix hjälper hem, BRF:er, fastighetsägare och företag med
+              felsökning, elinstallation, laddbox och elbesiktning. Du får en
+              tydlig bedömning, behöriga elektriker och arbete som går att
+              följa upp.
             </p>
+            <div className="mt-6 grid gap-3 text-sm font-bold text-[#333333] sm:grid-cols-3">
+              {trustItems.slice(0, 3).map((item) => (
+                <div key={item} className="border-l-4 border-[#f08000] bg-[#fbfaf7] px-4 py-3">
+                  {item}
+                </div>
+              ))}
+            </div>
             <div className="mt-7 overflow-hidden rounded-lg border border-[#ded6c9] bg-[#111111] shadow-sm lg:hidden">
               <div className="relative aspect-[16/10]">
                 <Image
@@ -110,17 +116,6 @@ export default function Home() {
               >
                 Ring {contact.phoneDisplay}
               </TrackedLink>
-              <TrackedLink
-                href={contact.emailHref}
-                eventName="click_email"
-                additionalEvents={["click_quote", "generate_lead"]}
-                eventLocation="home-hero"
-                eventLabel="Mejla förfrågan"
-                eventContext="home-hero-email-lead"
-                className="rounded-md border border-[#d8d0c4] px-5 py-3 text-center text-sm font-bold"
-              >
-                Mejla förfrågan
-              </TrackedLink>
             </div>
           </div>
 
@@ -135,23 +130,6 @@ export default function Home() {
                 sizes="(min-width: 1024px) 48vw, 100vw"
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-black/18 to-transparent" />
-              <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                <div className="flex flex-wrap gap-2">
-                  {trustItems.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-md border border-white/20 bg-black/44 px-3 py-2 text-xs font-black backdrop-blur"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <p className="mt-5 max-w-md text-sm font-semibold leading-6 text-white/86">
-                  Dokumenterat utförande, behöriga elektriker och planering som
-                  fungerar för både hem, fastigheter och företag.
-                </p>
-              </div>
             </div>
             <div className="flex items-center gap-4 bg-white p-4 text-[#151515]">
               <Image
@@ -164,7 +142,7 @@ export default function Home() {
               />
               <div className="h-11 w-px bg-[#ded6c9]" />
               <div>
-                <p className="text-sm font-black">Sundsvall, Timrå, Alnö, Njurunda och Matfors</p>
+                <p className="text-sm font-black">Lokalt team i Sundsvallsområdet</p>
                 <p className="text-xs text-[#666666]">{contact.street}</p>
               </div>
             </div>
@@ -172,7 +150,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="border-y border-[#e8e1d6] bg-[#fbfaf7] px-4 py-8 md:px-8">
+      <section className="border-y border-[#e8e1d6] bg-[#fbfaf7] px-4 py-10 md:px-8">
+        <div className="mx-auto mb-7 max-w-7xl">
+          <p className="text-sm font-black text-[#0f7a5a]">Varför välja El-Fix?</p>
+          <h2 className="mt-3 max-w-3xl text-3xl font-black leading-tight md:text-4xl">
+            Mindre osäkerhet före jobbet. Bättre kontroll efteråt.
+          </h2>
+        </div>
         <div className="mx-auto grid max-w-7xl gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {audienceCards.map((card) => (
             <article key={card.title} className="rounded-lg bg-white p-5 shadow-sm">
@@ -200,16 +184,16 @@ export default function Home() {
           <div>
             <p className="text-sm font-black text-[#d86f00]">Lokalt projektbevis</p>
             <h2 className="mt-3 text-3xl font-black leading-tight md:text-4xl">
-              Därför väljer kunder El-Fix när elen måste bli rätt.
+              Ett riktigt projekt säger mer än en lång säljpitch.
             </h2>
             <p className="mt-5 text-base leading-8 text-[#555555]">
-              Vi kombinerar lokalt ansvar med tydlig dokumentation, registrerade
-              elektriker, Elkedjans kvalitetstänk och erfarenhet från både hem,
-              fastigheter och verksamheter. Du ska förstå vad som görs, varför
-              det görs och vad nästa steg blir.
+              På tak, i elcentraler och i driftmiljöer måste detaljerna stämma.
+              El-Fix arbetar med kontroll, märkning, dokumentation och tydlig
+              återkoppling så att installationen går att lita på även efter att
+              teknikern har åkt.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-3">
-              {["Dokumenterat arbete", "Behöriga elektriker", "Medlem i Elkedjan"].map((item) => (
+              {["Mätning och kontroll", "Dokumenterat utförande", "Tydliga nästa steg"].map((item) => (
                 <div key={item} className="rounded-lg border border-[#ded6c9] bg-[#fbfaf7] p-4 text-sm font-black">
                   {item}
                 </div>
@@ -400,15 +384,45 @@ export default function Home() {
           <div>
             <p className="text-sm font-black text-[#0f7a5a]">Lokalt område</p>
             <h2 className="mt-3 text-3xl font-black leading-tight md:text-4xl">
-              El-Fix hjälper kunder i rätt del av regionen.
+              Lokal närvaro gör planeringen enklare.
             </h2>
           </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            {localAreas.map((item) => (
-              <div key={item} className="rounded-lg bg-white p-5 text-sm font-semibold leading-7 shadow-sm">
-                {item}
-              </div>
-            ))}
+          <div className="rounded-lg bg-white p-6 shadow-sm">
+            <p className="text-base leading-8 text-[#4d4d4d]">
+              Med utgångspunkt från Björneborgsgatan planerar El-Fix uppdrag i
+              Sundsvall med omnejd. Det gör det lättare att samordna service,
+              återbesök, laddboxinstallationer och besiktningar när vi redan är
+              i närheten.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {localAreas.map((item) => (
+                <span key={item} className="rounded-md border border-[#cbded4] bg-[#f7fbf8] px-3 py-2 text-sm font-bold text-[#24483b]">
+                  {item}
+                </span>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <TrackedLink
+                href="/elektriker-sundsvall/"
+                eventName="click_contact"
+                eventLocation="home-area-section"
+                eventLabel="Läs om elektriker i Sundsvall"
+                eventContext="area-navigation"
+                className="rounded-md bg-[#111111] px-4 py-3 text-center text-sm font-black text-white"
+              >
+                Elektriker i Sundsvall
+              </TrackedLink>
+              <TrackedLink
+                href="/foretag-brf/"
+                eventName="click_contact"
+                eventLocation="home-area-section"
+                eventLabel="Läs om företag och BRF"
+                eventContext="area-navigation"
+                className="rounded-md border border-[#cbded4] px-4 py-3 text-center text-sm font-bold"
+              >
+                Företag och BRF
+              </TrackedLink>
+            </div>
           </div>
         </div>
       </section>

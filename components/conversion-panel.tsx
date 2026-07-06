@@ -1,6 +1,6 @@
 import { LeadForm } from "@/components/lead-form";
 import { TrackedLink } from "@/components/tracked-link";
-import { contact, localAreas, serviceCards } from "@/lib/site-content";
+import { contact, serviceCards } from "@/lib/site-content";
 
 export function ConversionPanel() {
   return (
@@ -60,7 +60,8 @@ export function ConversionPanel() {
       </div>
 
       <div className="mt-4 rounded-md bg-[#eaf3ee] p-4 text-sm leading-7 text-[#24483b]">
-        <strong>Område:</strong> {localAreas.join(", ")}.
+        <strong>Område:</strong> El-Fix utgår från Sundsvall och planerar uppdrag
+        i närområdet utifrån plats, prioritet och teknikerläge.
       </div>
     </div>
   );

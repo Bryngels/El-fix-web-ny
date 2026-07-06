@@ -23,8 +23,8 @@ export const navItems = [
 export const trustItems = [
   "Behöriga elektriker",
   "Medlem i Elkedjan",
-  "IN ELTEST",
-  "Lokalt team i Sundsvallsområdet",
+  "Dokumenterat arbete",
+  "Lokalt team",
 ];
 
 export const serviceCards = [
@@ -68,20 +68,20 @@ export const serviceCards = [
 
 export const audienceCards = [
   {
-    title: "Privatkund",
-    copy: "Trygga installationer, laddbox, felsökning och elbesiktning för hemmet.",
+    title: "Behöriga elektriker",
+    copy: "Arbetet utförs av riktiga elektriker som vet vad som ska kontrolleras, dokumenteras och lämnas över.",
   },
   {
-    title: "Företag",
-    copy: "Service, drift, projektledning och dokumentation med minimal störning i verksamheten.",
+    title: "Medlem i Elkedjan",
+    copy: "El-Fix är en del av Elkedjan, med etablerade arbetssätt, leverantörsnätverk och fokus på kvalitet.",
   },
   {
-    title: "BRF & fastighet",
-    copy: "Besiktning, underhåll, serviceavtal och energiåtgärder för gemensamma anläggningar.",
+    title: "Tydlig återkoppling",
+    copy: "Du får veta vad som är gjort, vad som behöver följas upp och när ett större underlag behövs.",
   },
   {
-    title: "Energioptimering",
-    copy: "El, laddning, solenergi, styrning och värme i samordnade lösningar.",
+    title: "Större lösningar",
+    copy: "Vid energi- och installationsprojekt kan vi samordna med Bryngels och Hedlert för en mer komplett lösning.",
   },
 ];
 
@@ -123,7 +123,7 @@ export const servicePages: Record<string, ServicePage> = {
     nextStep:
       "Ring eller mejla adress, typ av installation och gärna bilder på elcentral eller platsen där arbetet ska utföras.",
     localCopy:
-      "Vi utför elinstallationer i Sundsvall, Timrå, Alnö, Njurunda och Matfors med utgångspunkt från Björneborgsgatan.",
+      "Vi utför elinstallationer i Sundsvallsområdet med utgångspunkt från Björneborgsgatan.",
     image: {
       src: "/images/elkedjan-installation-cabinet.webp",
       alt: "Noggrann elinstallation i elcentral",
@@ -141,7 +141,7 @@ export const servicePages: Record<string, ServicePage> = {
       "Arbetet kontrolleras och dokumenteras.",
     ],
     proof: [
-      "Lokalt team i Sundsvall, Timrå, Alnö, Njurunda och Matfors",
+      "Lokalt team med uppdrag i Sundsvall med omnejd",
       "Medlem i Elkedjan",
       "Mångårig erfarenhet av el, data, tele och säkerhet",
     ],
@@ -164,7 +164,7 @@ export const servicePages: Record<string, ServicePage> = {
     metaTitle: "Elservice och felsökning Sundsvall | El-Fix",
     title: "Elservice och felsökning i Sundsvall",
     description:
-      "Elservice och felsökning i Sundsvall, Timrå, Alnö, Njurunda och Matfors när säkringar går, jordfelsbrytare löser ut eller drift störs.",
+      "Elservice och felsökning i Sundsvallsområdet när säkringar går, jordfelsbrytare löser ut eller drift störs.",
     intro:
       "När elen inte fungerar behövs snabb diagnos, rätt åtgärd och tydlig återkoppling. El-Fix felsöker, mäter och dokumenterar så du vet vad som hänt och vad som bör göras.",
     problem:
@@ -174,7 +174,7 @@ export const servicePages: Record<string, ServicePage> = {
     nextStep:
       "Ring om ärendet är brådskande. Vid planerad service: mejla plats, problem, när felet uppstår och gärna bilder på central eller berörd installation.",
     localCopy:
-      "Vi hjälper privatpersoner, företag och fastighetsägare i Sundsvall, Timrå, Alnö, Njurunda och Matfors.",
+      "Vi hjälper privatpersoner, företag och fastighetsägare i Sundsvall med omnejd.",
     image: {
       src: "/images/elkedjan-industrial-service.webp",
       alt: "Elektriker felsöker installation i teknisk miljö",
@@ -183,7 +183,7 @@ export const servicePages: Record<string, ServicePage> = {
       "Felsökning av elproblem, uttag, centraler och belysning",
       "Service och underhåll av befintliga installationer",
       "Serviceavtal för företag och fastigheter",
-      "Planerade åtgärder i Sundsvall, Timrå, Alnö, Njurunda och Matfors",
+      "Planerade åtgärder i Sundsvallsområdet",
     ],
     process: [
       "Du beskriver problemet via telefon eller mejl.",
@@ -215,7 +215,7 @@ export const servicePages: Record<string, ServicePage> = {
     metaTitle: "Elbesiktning Sundsvall | IN ELTEST | El-Fix",
     title: "Elbesiktning i Sundsvall med IN ELTEST och protokoll",
     description:
-      "Boka elbesiktning i Sundsvall, Timrå, Alnö, Njurunda och Matfors. El-Fix utför IN ELTEST med protokoll och tydlig åtgärdsbedömning.",
+      "Boka elbesiktning i Sundsvallsområdet. El-Fix utför IN ELTEST med protokoll och tydlig åtgärdsbedömning.",
     intro:
       "En elanläggning kan ha fel som inte syns. Med IN ELTEST får du en strukturerad genomgång av elsäkerheten och ett protokoll som visar om något behöver åtgärdas.",
     problem:
@@ -225,7 +225,7 @@ export const servicePages: Record<string, ServicePage> = {
     nextStep:
       "Mejla adress, bostadstyp, ungefärlig storlek och om det finns flera elcentraler. Vi återkommer med bokningsförslag och prisbild.",
     localCopy:
-      "Elbesiktning utförs i Sundsvall med omnejd, inklusive Timrå, Alnö, Njurunda och Matfors.",
+      "Elbesiktning utförs i Sundsvall med omnejd, bland annat i Timrå, Alnö, Njurunda och Matfors.",
     image: {
       src: "/images/elkedjan-elbesiktning-detail.webp",
       alt: "Detaljkontroll av säkringar vid elbesiktning",
@@ -266,7 +266,7 @@ export const servicePages: Record<string, ServicePage> = {
     metaTitle: "Installera laddbox Sundsvall | El-Fix",
     title: "Laddbox i Sundsvall för villa, BRF och företag",
     description:
-      "Installera laddbox i Sundsvall, Timrå, Alnö, Njurunda och Matfors. El-Fix hjälper villa, BRF och företag med säker installation och lastbalansering.",
+      "Installera laddbox i Sundsvallsområdet. El-Fix hjälper villa, BRF och företag med säker installation och lastbalansering.",
     intro:
       "En laddbox ska vara säker, rätt dimensionerad och anpassad till elanläggningen. El-Fix hjälper till från bedömning till installation och uppföljning.",
     problem:
@@ -276,7 +276,7 @@ export const servicePages: Record<string, ServicePage> = {
     nextStep:
       "Mejla adress, antal bilar eller laddplatser, huvudsäkring och gärna bilder på elcentralen. Ring om du vill få en snabb första bedömning.",
     localCopy:
-      "Vi installerar laddboxar i Sundsvall, Timrå, Alnö, Njurunda och Matfors och kan samordna laddning med solenergi och energioptimering.",
+      "Vi installerar laddboxar i Sundsvall med omnejd och kan samordna laddning med solenergi och energioptimering.",
     image: {
       src: "/images/elkedjan-laddbox-car.webp",
       alt: "Installerad laddbox vid bostad med elbil",
@@ -296,7 +296,7 @@ export const servicePages: Record<string, ServicePage> = {
     proof: [
       "Behöriga elektriker",
       "Samarbete kring kompletta energilösningar",
-      "Lokalt utförande i Sundsvall, Timrå, Alnö, Njurunda och Matfors",
+      "Lokalt utförande i Sundsvallsområdet",
     ],
     faqs: [
       {

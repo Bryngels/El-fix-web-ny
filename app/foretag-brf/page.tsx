@@ -7,7 +7,7 @@ import { contact, localAreas, trustItems } from "@/lib/site-content";
 export const metadata: Metadata = {
   title: "Elektriker för företag och BRF i Sundsvall | El-Fix",
   description:
-    "El-Fix hjälper företag, BRF:er och fastighetsägare i Sundsvall, Timrå, Alnö, Njurunda och Matfors med elservice, laddplatser, besiktning och dokumentation.",
+    "El-Fix hjälper företag, BRF:er och fastighetsägare i Sundsvallsområdet med elservice, laddplatser, besiktning och dokumentation.",
 };
 
 const needs = [

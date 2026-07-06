@@ -6,7 +6,7 @@ import { audienceCards, contact, serviceCards, trustItems } from "@/lib/site-con
 export const metadata: Metadata = {
   title: "Elektriker Sundsvall, Timrå och Alnö | El-Fix",
   description:
-    "Behöver du elektriker i Sundsvall? El-Fix hjälper Sundsvall, Timrå, Alnö, Njurunda och Matfors med felsökning, laddbox, elbesiktning och installation.",
+    "Behöver du elektriker i Sundsvall? El-Fix hjälper i Sundsvallsområdet med felsökning, laddbox, elbesiktning och installation.",
 };
 
 export default function ElektrikerSundsvallPage() {
@@ -45,9 +45,8 @@ export default function ElektrikerSundsvallPage() {
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-[#555555] md:text-lg">
               El-Fix utgår från Björneborgsgatan och hjälper privatpersoner,
-              företag, BRF:er och fastighetsägare i Sundsvall, Timrå, Alnö,
-              Njurunda och Matfors med felsökning, installation, laddbox,
-              elbesiktning och energiåtgärder.
+              företag, BRF:er och fastighetsägare i Sundsvall med omnejd med
+              felsökning, installation, laddbox, elbesiktning och energiåtgärder.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <TrackedLink
@@ -102,8 +101,8 @@ export default function ElektrikerSundsvallPage() {
           </div>
           <div>
             <p className="text-sm text-white/62">Område</p>
-            <p className="mt-1 text-xl font-black">Sundsvall, Timrå, Alnö, Njurunda och Matfors</p>
-            <p className="text-sm text-white/72">Lokalt team med utgångspunkt på Björneborgsgatan.</p>
+            <p className="mt-1 text-xl font-black">Sundsvall med omnejd</p>
+            <p className="text-sm text-white/72">Lokalt team för bland annat Timrå, Alnö, Njurunda och Matfors.</p>
           </div>
           <div>
             <p className="text-sm text-white/62">Kontakt</p>

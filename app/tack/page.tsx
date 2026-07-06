@@ -6,7 +6,7 @@ import { contact } from "@/lib/site-content";
 export const metadata: Metadata = {
   title: "Tack för din förfrågan | El-Fix",
   description:
-    "Tack för din förfrågan till El-Fix. Vi hjälper kunder i Sundsvall, Timrå, Alnö, Njurunda och Matfors.",
+    "Tack för din förfrågan till El-Fix. Vi hjälper kunder i Sundsvall med omnejd.",
   robots: {
     index: false,
     follow: false,
