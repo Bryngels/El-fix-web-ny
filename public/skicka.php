@@ -20,6 +20,13 @@ const FORM_URL = '/#forfragan';
 const LOG_DIR = __DIR__ . '/../leads';
 const LOG_RETENTION_DAYS = 90;
 
+/**
+ * Tak för utgående mejl. Kontot delas med andra sajter och deras e-post, så
+ * en spammad formulärsida får inte kunna dra ner mejlutskicken för alla.
+ * Leads över taket loggas fortfarande, de mejlas bara inte.
+ */
+const MAX_MAILS_PER_HOUR = 20;
+
 /** Fält som visas i mejlet, i ordning. Nycklarna matchar formulärets name-attribut. */
 const FIELDS = [
     'namn' => 'Namn',
@@ -104,7 +111,7 @@ $headers = [
 
 $subject = 'Förfrågan: ' . headerSafe($values['arende']) . ' - ' . headerSafe($values['namn']);
 
-$sent = @mail(
+$sent = mailAllowed() && @mail(
     RECIPIENT,
     '=?UTF-8?B?' . base64_encode($subject) . '?=',
     $body,
@@ -115,6 +122,53 @@ $sent = @mail(
 logLead($values, $submittedAt, $sent);
 
 bounce(THANK_YOU_URL);
+
+/**
+ * Avgör om ett mejl till får skickas den här timmen.
+ *
+ * Håller en räknare per timme i en fil. Vid taket slutar skriptet mejla men
+ * fortsätter logga, så inget tappas - och kontots övriga mejl påverkas inte
+ * av att formulärsidan spammas.
+ */
+function mailAllowed(): bool
+{
+    if (!is_dir(LOG_DIR) && !@mkdir(LOG_DIR, 0700, true) && !is_dir(LOG_DIR)) {
+        // Kan vi inte räkna vet vi inte hur många som skickats. Mejla ändå,
+        // en tappad lead är värre än ett mejl över taket.
+        return true;
+    }
+
+    $handle = @fopen(LOG_DIR . '/rate.txt', 'c+');
+
+    if ($handle === false) {
+        return true;
+    }
+
+    try {
+        if (!flock($handle, LOCK_EX)) {
+            return true;
+        }
+
+        $hour = gmdate('YmdH');
+        $state = explode(':', trim((string) stream_get_contents($handle)));
+        $sameHour = ($state[0] ?? '') === $hour;
+        $count = $sameHour ? (int) ($state[1] ?? 0) : 0;
+
+        if ($count >= MAX_MAILS_PER_HOUR) {
+            return false;
+        }
+
+        ftruncate($handle, 0);
+        rewind($handle);
+        fwrite($handle, $hour . ':' . ($count + 1));
+        fflush($handle);
+
+        return true;
+    } finally {
+        flock($handle, LOCK_UN);
+        fclose($handle);
+    }
+}
 
 /**
  * Skriver leaden till en fil utanför webbrooten och rensar gamla poster.
