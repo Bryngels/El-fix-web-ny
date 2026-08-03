@@ -40,3 +40,6 @@ next-env.d.ts
 /dist/
 /.wrangler/
 /work/
+
+# Lokalt testade leads - innehåller personuppgifter
+/leads/

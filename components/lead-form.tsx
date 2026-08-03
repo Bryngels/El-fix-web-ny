@@ -5,14 +5,13 @@ export function LeadForm() {
     <form
       id="lead-form"
       name="lead-form"
-      action="/tack/"
-      method="get"
+      action="/skicka.php"
+      method="post"
       data-analytics-event="generate_lead"
       data-gtm-event="generate_lead"
       data-analytics-location="conversion-panel"
       data-gtm-location="conversion-panel"
       data-gtm-context="static-lead-form"
-      data-thank-you-url="/tack/"
       className="mt-6 grid gap-3"
     >
       <div>
@@ -91,6 +90,12 @@ export function LeadForm() {
         />
       </div>
 
+      {/* Dolt för människor. Fylls det i kommer inskicket från en bot. */}
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="lead-website">Lämna tomt</label>
+        <input id="lead-website" name="webbplats" tabIndex={-1} autoComplete="off" />
+      </div>
+
       <button
         type="submit"
         data-analytics-event="generate_lead"
@@ -103,8 +108,14 @@ export function LeadForm() {
       </button>
 
       <p className="text-xs leading-6 text-[#666666]">
-        Formuläret används för första kontakt och mätning. Du kan också mejla
-        direkt till <span className="font-bold">{contact.email}</span>.
+        Uppgifterna går till {contact.name} och används bara för att återkomma
+        om din förfrågan. Vi sparar dem inte längre än nödvändigt och lämnar
+        dem inte vidare. Läs mer i vår{" "}
+        <a className="font-bold underline" href="/integritetspolicy/">
+          integritetspolicy
+        </a>
+        . Du kan också ringa <span className="font-bold">{contact.phoneDisplay}</span>{" "}
+        eller mejla <span className="font-bold">{contact.email}</span>.
       </p>
     </form>
   );

@@ -116,6 +116,11 @@ export function SiteFooter() {
             >
               Kontakta oss
             </TrackedLink>
+            <p className="mt-6 text-white/60">
+              <a className="hover:underline" href="/integritetspolicy/">
+                Integritetspolicy
+              </a>
+            </p>
           </div>
         </div>
       </footer>

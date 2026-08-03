@@ -23,18 +23,11 @@ export function TrackingRuntime() {
         return;
       }
 
-      const thankYouUrl = form.dataset.thankYouUrl;
       const formData = new FormData(form);
-      let hasNavigated = false;
-      const navigateToThanks = () => {
-        if (!thankYouUrl || hasNavigated) {
-          return;
-        }
 
-        hasNavigated = true;
-        window.location.href = thankYouUrl;
-      };
-
+      // Formuläret postar till /skicka.php, som mejlar leaden och skickar
+      // vidare till tacksidan. Avbryt inte inskicket för mätningens skull -
+      // GA skickar med sendBeacon och överlever navigeringen.
       window.dataLayer = window.dataLayer || [];
       window.dataLayer.push({
         event: "generate_lead",
@@ -43,14 +36,7 @@ export function TrackingRuntime() {
         form_location: form.dataset.gtmLocation || form.dataset.analyticsLocation,
         form_context: form.dataset.gtmContext,
         lead_service: formData.get("arende") || undefined,
-        event_callback: navigateToThanks,
-        event_timeout: 900,
       });
-
-      if (thankYouUrl) {
-        event.preventDefault();
-        window.setTimeout(navigateToThanks, 900);
-      }
     };
 
     document.addEventListener("submit", handleSubmit);
