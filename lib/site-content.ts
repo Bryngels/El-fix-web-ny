@@ -10,6 +10,13 @@ export const contact = {
   hours: "Måndag-fredag 07.00-16.00",
 };
 
+/**
+ * Styr om webbformuläret visas. Avstängt tills domänens SPF tillåter
+ * webbservern att skicka mejl - fram till dess tar vi förfrågningar per
+ * telefon och mejl. Sätt till true för att visa formuläret igen.
+ */
+export const leadFormEnabled = false;
+
 export const localAreas = ["Sundsvall", "Timrå", "Alnö", "Njurunda", "Matfors"];
 
 export const navItems = [
