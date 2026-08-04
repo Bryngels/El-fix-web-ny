@@ -1,15 +1,6 @@
-import { contact, leadFormEnabled } from "@/lib/site-content";
+import { contact } from "@/lib/site-content";
 
 export function LeadForm() {
-  if (!leadFormEnabled) {
-    return (
-      <p className="mt-6 rounded-md bg-white p-4 text-sm leading-7 text-[#555555]">
-        Ring eller mejla oss så tar vi din förfrågan direkt. Vi svarar{" "}
-        {contact.hours.toLowerCase()}.
-      </p>
-    );
-  }
-
   return (
     <form
       id="lead-form"
