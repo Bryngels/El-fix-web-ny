@@ -20,20 +20,5 @@ export function GoogleTagManagerHead() {
   );
 }
 
-export function GoogleTagManagerNoScript() {
-  if (!containerId) {
-    return null;
-  }
-
-  return (
-    <noscript>
-      <iframe
-        src={`https://www.googletagmanager.com/ns.html?id=${containerId}`}
-        height="0"
-        width="0"
-        style={{ display: "none", visibility: "hidden" }}
-        title="Google Tag Manager"
-      />
-    </noscript>
-  );
-}
+// Noscript-varianten är borttagen med flit: utan JavaScript kan besökaren inte
+// lämna samtycke, och då ska inget laddas från Google.

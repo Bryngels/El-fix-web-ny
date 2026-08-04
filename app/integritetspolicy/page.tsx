@@ -114,23 +114,22 @@ export default function PrivacyPage() {
 
           <Section title="Kakor och besöksstatistik">
             <p>
-              Sajten använder Google Analytics via Google Tag Manager för att
+              Sajten kan använda Google Analytics via Google Tag Manager för att
               mäta hur besökare hittar hit och vilka sidor som används. Verktygen
               sätter kakor och behandlar bland annat IP-adress och information om
-              din enhet, vilket kan innebära överföring till USA.
+              din enhet, vilket kan innebära överföring till USA. Den rättsliga
+              grunden är ditt samtycke.
             </p>
             <p>
-              Du kan blockera kakor i webbläsarens inställningar eller använda
-              Googles{" "}
-              <a
-                className="font-bold underline"
-                href="https://tools.google.com/dlpage/gaoptout"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                webbläsartillägg för att välja bort Google Analytics
-              </a>
-              . Sajten fungerar utan att statistiken samlas in.
+              Inget av detta laddas innan du sagt ja. Väljer du{" "}
+              <span className="font-bold">Bara nödvändiga</span> hämtas inga
+              skript från Google och inga kakor sätts. Sajten fungerar likadant
+              oavsett vad du väljer.
+            </p>
+            <p>
+              Du kan ändra dig när som helst via{" "}
+              <span className="font-bold">Hantera kakor</span> längst ner på
+              sidan. Återkallar du samtycket raderas de kakor som redan satts.
             </p>
           </Section>
 

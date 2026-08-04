@@ -1,10 +1,5 @@
 import type { Metadata } from "next";
-import { Suspense } from "react";
-import { GoogleAnalytics } from "@/components/google-analytics";
-import {
-  GoogleTagManagerHead,
-  GoogleTagManagerNoScript,
-} from "@/components/google-tag-manager";
+import { CookieConsent } from "@/components/cookie-consent";
 import { TrackingRuntime } from "@/components/tracking-runtime";
 import "./globals.css";
 
@@ -37,16 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="sv">
-      <head>
-        <GoogleTagManagerHead />
-      </head>
       <body>
-        <GoogleTagManagerNoScript />
         {children}
         <TrackingRuntime />
-        <Suspense fallback={null}>
-          <GoogleAnalytics />
-        </Suspense>
+        <CookieConsent />
       </body>
     </html>
   );

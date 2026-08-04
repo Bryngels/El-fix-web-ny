@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import Image from "next/image";
+import { ConsentSettingsLink } from "@/components/consent-settings-link";
 import { TrackedLink } from "@/components/tracked-link";
 import { contact, navItems } from "@/lib/site-content";
 
@@ -116,10 +117,11 @@ export function SiteFooter() {
             >
               Kontakta oss
             </TrackedLink>
-            <p className="mt-6 text-white/60">
+            <p className="mt-6 flex flex-wrap gap-x-4 gap-y-1 text-white/60">
               <a className="hover:underline" href="/integritetspolicy/">
                 Integritetspolicy
               </a>
+              <ConsentSettingsLink className="hover:underline" />
             </p>
           </div>
         </div>
