@@ -7,13 +7,18 @@ declare(strict_types=1);
  * Sajten är en statisk export utan backend, så det här skriptet är enda
  * serverdelen. Det körs av Oderland (PHP 8.4) direkt i webbrooten.
  *
- * Varje lead skrivs också till en loggfil utanför webbrooten. Domänen har
- * DMARC p=reject och en SPF som bara tillåter Microsoft 365, så mejl härifrån
- * kan avvisas tills webbserverns IP finns med i SPF-posten. Loggen gör att en
- * lead aldrig försvinner tyst under tiden.
+ * Varje lead skrivs också till en loggfil utanför webbrooten. Loggen är
+ * reserven om ett mejl inte kommer fram, så att en lead aldrig försvinner
+ * tyst.
+ *
+ * Utgående mejl lämnar Oderlands smarthost och DKIM-signeras där. Domänens
+ * SPF listar webbserverns egen IP men inte smarthostens, så leveransen vilar
+ * på DKIM tills include:_spf.oderland.com finns i SPF-posten.
  */
 
 const RECIPIENT = 'info@el-fix.se';
+const COMPANY = 'El-Fix i Norr AB';
+const COMPANY_PHONE = '060-17 58 08';
 const SENDER = 'webform@el-fix.se';
 const THANK_YOU_URL = '/tack/';
 const FORM_URL = '/#forfragan';
@@ -43,6 +48,12 @@ function bounce(string $url): never
 {
     header('Location: ' . $url, true, 303);
     exit;
+}
+
+/** Kodar ämnesraden så att svenska tecken överlever. */
+function encodeSubject(string $subject): string
+{
+    return '=?UTF-8?B?' . base64_encode($subject) . '?=';
 }
 
 /** Tar bort radbrytningar så att värden inte kan injicera egna mejlheaders. */
@@ -120,15 +131,69 @@ $subject = 'Förfrågan: ' . headerSafe($values['arende']) . ' - ' . headerSafe(
 
 $sent = mailAllowed() && @mail(
     RECIPIENT,
-    '=?UTF-8?B?' . base64_encode($subject) . '?=',
+    encodeSubject($subject),
     $body,
     implode("\r\n", $headers),
     '-f' . SENDER
 );
 
-logLead($values, $submittedAt, $sent);
+// Kvittot skickas efter notisen, så att notisen får timtaket först om
+// formuläret spammas. En lead som El-Fix inte ser är värre än ett uteblivet
+// kvitto.
+$receipted = $replyTo !== false && sendReceipt($replyTo, $values, $lines);
+
+logLead($values, $submittedAt, $sent, $receipted);
 
 bounce(THANK_YOU_URL);
+
+/**
+ * Bekräftar till besökaren att förfrågan kommit fram.
+ *
+ * Skickas bara till en adress som validerats som e-post, och bara när
+ * besökaren själv fyllt i det frivilliga fältet. Svar går till info-adressen,
+ * inte till formulärets avsändare, så att kunden kan fylla på i samma tråd.
+ */
+function sendReceipt(string $to, array $values, array $lines): bool
+{
+    if (!mailAllowed()) {
+        return false;
+    }
+
+    $body = implode("\n", [
+        'Hej ' . headerSafe($values['namn']) . ',',
+        '',
+        'Vi har tagit emot din förfrågan och hör av oss så snart vi kan,',
+        'oftast samma eller nästa arbetsdag.',
+        '',
+        'Det här skickade du in:',
+        '',
+        implode("\n", $lines),
+        '',
+        'Behöver du nå oss innan dess går det bra att ringa ' . COMPANY_PHONE . '.',
+        'Du kan också svara på det här mejlet om du vill lägga till något.',
+        '',
+        '---',
+        COMPANY,
+        RECIPIENT,
+        COMPANY_PHONE,
+    ]);
+
+    $headers = [
+        'From: ' . COMPANY . ' <' . SENDER . '>',
+        'Reply-To: ' . RECIPIENT,
+        'Content-Type: text/plain; charset=utf-8',
+        'Auto-Submitted: auto-replied',
+        'X-Mailer: el-fix-static-form',
+    ];
+
+    return @mail(
+        $to,
+        encodeSubject('Vi har tagit emot din förfrågan - ' . COMPANY),
+        $body,
+        implode("\r\n", $headers),
+        '-f' . SENDER
+    );
+}
 
 /**
  * Avgör om ett mejl till får skickas den här timmen.
@@ -181,7 +246,12 @@ function mailAllowed(): bool
  * Skriver leaden till en fil utanför webbrooten och rensar gamla poster.
  * Reserv om mejlet inte kommer fram, inte ett register att arbeta i.
  */
-function logLead(array $values, DateTimeImmutable $submittedAt, bool $mailed): void
+function logLead(
+    array $values,
+    DateTimeImmutable $submittedAt,
+    bool $mailed,
+    bool $receipted
+): void
 {
     if (!is_dir(LOG_DIR) && !@mkdir(LOG_DIR, 0700, true) && !is_dir(LOG_DIR)) {
         return;
@@ -191,6 +261,7 @@ function logLead(array $values, DateTimeImmutable $submittedAt, bool $mailed): v
         [
             'tid' => $submittedAt->format(DateTimeInterface::ATOM),
             'mejlat' => $mailed,
+            'kvitterat' => $receipted,
             'falt' => $values,
         ],
         JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES
