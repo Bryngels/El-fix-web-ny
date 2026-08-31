@@ -61,8 +61,10 @@ export default function PrivacyPage() {
             <p>
               När du skickar en förfrågan via formuläret på sajten lämnar du
               namn, telefonnummer, ort, typ av ärende och en beskrivning av vad
-              du behöver hjälp med. Vi använder uppgifterna för att kontakta
-              dig, bedöma uppdraget och lämna offert eller boka tid.
+              du behöver hjälp med. Du kan också lämna din e-postadress om du
+              hellre vill ha svar skriftligt, men fältet är frivilligt och
+              förfrågan går fram utan det. Vi använder uppgifterna för att
+              kontakta dig, bedöma uppdraget och lämna offert eller boka tid.
             </p>
             <p>
               Den rättsliga grunden är att behandlingen är nödvändig för att

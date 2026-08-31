@@ -31,6 +31,7 @@ const MAX_MAILS_PER_HOUR = 20;
 const FIELDS = [
     'namn' => 'Namn',
     'telefon' => 'Telefon',
+    'epost' => 'E-post',
     'ort' => 'Ort',
     'arende' => 'Ärende',
     'beskrivning' => 'Beskrivning',
@@ -106,8 +107,14 @@ $headers = [
     'X-Mailer: el-fix-static-form',
 ];
 
-// Formuläret frågar bara efter telefon, så det finns ingen adress att svara till.
-// Återkoppling sker per telefon.
+// E-post är frivilligt. Har besökaren lämnat en giltig adress går den in som
+// Reply-To, så att förfrågan kan besvaras direkt ur inkorgen. Annars sker
+// återkopplingen per telefon, som tidigare.
+$replyTo = filter_var($values['epost'], FILTER_VALIDATE_EMAIL);
+
+if ($replyTo !== false) {
+    $headers[] = 'Reply-To: ' . headerSafe($replyTo);
+}
 
 $subject = 'Förfrågan: ' . headerSafe($values['arende']) . ' - ' . headerSafe($values['namn']);
 

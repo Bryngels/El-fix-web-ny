@@ -56,6 +56,23 @@ export function LeadForm() {
       </div>
 
       <div>
+        <label className="text-xs font-black uppercase tracking-[0.08em] text-[#555555]" htmlFor="lead-email">
+          E-post (frivilligt)
+        </label>
+        <input
+          id="lead-email"
+          name="epost"
+          type="email"
+          autoComplete="email"
+          inputMode="email"
+          className="mt-2 w-full rounded-md border border-[#ded6c9] bg-white px-3 py-3 text-sm outline-none focus:border-[#f08000]"
+        />
+        <p className="mt-2 text-xs leading-5 text-[#666666]">
+          Fyll i om du hellre vill ha svar skriftligt än bli uppringd.
+        </p>
+      </div>
+
+      <div>
         <label className="text-xs font-black uppercase tracking-[0.08em] text-[#555555]" htmlFor="lead-type">
           Ärende
         </label>
