@@ -37,6 +37,10 @@ export function TrackingRuntime() {
         form_context: form.dataset.gtmContext,
         lead_service: formData.get("arende") || undefined,
       });
+
+      // Finns fbq bara om besökaren sagt ja till marknadsföring. Utan
+      // samtycke är den odefinierad och ingenting skickas till Meta.
+      window.fbq?.("track", "Lead");
     };
 
     document.addEventListener("submit", handleSubmit);

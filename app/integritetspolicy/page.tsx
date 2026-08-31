@@ -105,6 +105,10 @@ export default function PrivacyPage() {
                 Google, för besöksstatistik via Google Analytics och Google Tag
                 Manager.
               </li>
+              <li>
+                Meta (Facebook och Instagram), för att mäta och rikta vår
+                annonsering.
+              </li>
             </ul>
             <p>
               Uppgifter kan även lämnas ut när lag kräver det, till exempel vid
@@ -112,24 +116,42 @@ export default function PrivacyPage() {
             </p>
           </Section>
 
-          <Section title="Kakor och besöksstatistik">
+          <Section title="Kakor, besöksstatistik och annonsering">
             <p>
-              Sajten kan använda Google Analytics via Google Tag Manager för att
-              mäta hur besökare hittar hit och vilka sidor som används. Verktygen
-              sätter kakor och behandlar bland annat IP-adress och information om
-              din enhet, vilket kan innebära överföring till USA. Den rättsliga
-              grunden är ditt samtycke.
+              Utöver det som krävs för att sajten ska fungera använder vi två
+              slags kakor, och båda kräver ditt samtycke. Du väljer dem var för
+              sig.
+            </p>
+            <ul className="list-disc space-y-2 pl-5">
+              <li>
+                <span className="font-bold">Besöksstatistik.</span> Google
+                Analytics via Google Tag Manager, för att mäta hur besökare
+                hittar hit och vilka sidor som används.
+              </li>
+              <li>
+                <span className="font-bold">Marknadsföring.</span> Meta-pixeln,
+                för att mäta resultatet av våra annonser på Facebook och
+                Instagram och för att kunna visa annonser för dig som besökt
+                sajten.
+              </li>
+            </ul>
+            <p>
+              Verktygen sätter kakor och behandlar bland annat IP-adress och
+              information om din enhet, vilket kan innebära överföring till USA.
+              Den rättsliga grunden är ditt samtycke.
             </p>
             <p>
               Inget av detta laddas innan du sagt ja. Väljer du{" "}
               <span className="font-bold">Bara nödvändiga</span> hämtas inga
-              skript från Google och inga kakor sätts. Sajten fungerar likadant
-              oavsett vad du väljer.
+              skript från Google eller Meta och inga sådana kakor sätts. Säger
+              du ja till bara det ena laddas inte det andra. Sajten fungerar
+              likadant oavsett vad du väljer.
             </p>
             <p>
               Du kan ändra dig när som helst via{" "}
               <span className="font-bold">Hantera kakor</span> längst ner på
-              sidan. Återkallar du samtycket raderas de kakor som redan satts.
+              sidan. Återkallar du ett samtycke raderas de kakor som redan
+              satts.
             </p>
           </Section>
 

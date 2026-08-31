@@ -41,8 +41,13 @@ skickar användaren till `/tack/` efter submit.
 ## Analytics
 
 Google Analytics 4 laddas via `NEXT_PUBLIC_GA_MEASUREMENT_ID`. Google Tag
-Manager laddas via `NEXT_PUBLIC_GTM_CONTAINER_ID`. Vid automatisk deploy till
-Oderland sätts variablerna i GitHub Actions-workflowen.
+Manager laddas via `NEXT_PUBLIC_GTM_CONTAINER_ID`. Meta-pixeln laddas via
+`NEXT_PUBLIC_META_PIXEL_ID`. Vid automatisk deploy till Oderland sätts
+variablerna i GitHub Actions-workflowen.
+
+Ingenting av detta laddas utan samtycke. Kakbannern frågar per ändamål:
+statistik (Google) och marknadsföring (Meta) är två separata val, lagrade i
+localStorage under `elfix-kaksamtycke`. Se `lib/consent.ts`.
 
 CTA:er och kontaktlänkar skickar dataLayer-event för GTM med konsekventa
 eventnamn: `click_phone`, `click_email`, `click_quote`, `click_contact` och
