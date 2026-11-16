@@ -7,8 +7,8 @@ export function LeadForm() {
       name="lead-form"
       action="/skicka.php"
       method="post"
-      data-analytics-event="generate_lead"
-      data-gtm-event="generate_lead"
+      data-analytics-event="lead_form_submit"
+      data-gtm-event="lead_form_submit"
       data-analytics-location="conversion-panel"
       data-gtm-location="conversion-panel"
       data-gtm-context="static-lead-form"
@@ -115,8 +115,8 @@ export function LeadForm() {
 
       <button
         type="submit"
-        data-analytics-event="generate_lead"
-        data-gtm-event="generate_lead"
+        data-analytics-event="lead_form_submit"
+        data-gtm-event="lead_form_submit"
         data-gtm-location="conversion-panel"
         data-gtm-context="static-lead-form-submit"
         className="rounded-md bg-[#f08000] px-5 py-4 text-sm font-black text-[#111111] transition hover:bg-[#ff9a1f]"

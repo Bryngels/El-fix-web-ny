@@ -59,7 +59,7 @@ export function ServicePageTemplate({ service }: { service: ServicePage }) {
               <TrackedLink
                 href={contact.emailHref}
                 eventName="click_email"
-                additionalEvents={["click_quote", "generate_lead"]}
+                additionalEvents={["click_quote"]}
                 eventLocation={`${service.slug}-hero`}
                 eventLabel="Mejla"
                 eventContext="service-hero-email-lead"

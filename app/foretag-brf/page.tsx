@@ -92,7 +92,7 @@ export default function ForetagBrfPage() {
               <TrackedLink
                 href={contact.emailHref}
                 eventName="click_email"
-                additionalEvents={["click_contact", "generate_lead"]}
+                additionalEvents={["click_contact"]}
                 eventLocation="foretag-brf-hero"
                 eventLabel="Mejla uppdrag"
                 eventContext="business-email-lead"

@@ -28,7 +28,7 @@ export function ConversionPanel() {
         <TrackedLink
           href={contact.emailHref}
           eventName="click_email"
-          additionalEvents={["click_quote", "generate_lead"]}
+          additionalEvents={["click_quote"]}
           eventLocation="conversion-panel"
           eventLabel="Mejla förfrågan"
           eventContext="conversion-panel-email-lead"

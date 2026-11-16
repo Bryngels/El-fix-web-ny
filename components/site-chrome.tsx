@@ -186,7 +186,7 @@ export function CtaBand({
           <TrackedLink
             href={contact.emailHref}
             eventName="click_email"
-            additionalEvents={["click_quote", "generate_lead"]}
+            additionalEvents={["click_quote"]}
             eventLocation="cta-band"
             eventLabel="Mejla"
             eventContext="cta-band-email-lead"

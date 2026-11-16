@@ -62,7 +62,7 @@ export default function ElektrikerSundsvallPage() {
               <TrackedLink
                 href={contact.emailHref}
                 eventName="click_email"
-                additionalEvents={["click_quote", "generate_lead"]}
+                additionalEvents={["click_quote"]}
                 eventLocation="elektriker-sundsvall-hero"
                 eventLabel="Mejla förfrågan"
                 eventContext="local-hero-email-lead"

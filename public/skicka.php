@@ -144,7 +144,32 @@ $receipted = $replyTo !== false && sendReceipt($replyTo, $values, $lines);
 
 logLead($values, $submittedAt, $sent, $receipted);
 
+markLead($values['arende']);
+
 bounce(THANK_YOU_URL);
+
+/**
+ * Talar om för tacksidan att ett riktigt inskick just tagits emot.
+ *
+ * Tacksidan är statisk och kan nås direkt, laddas om eller öppnas av en bot
+ * via honeypoten. Bara den här kakan gör att den räknar en lead. Kakan
+ * skrivs först när förfrågan klarat valideringen och loggats, lever i två
+ * minuter och raderas av tacksidan så fort den lästs. Den bär bara ärendets
+ * typ, inga personuppgifter, och behövs för att tjänsten ska fungera – den
+ * mäter ingenting själv.
+ */
+function markLead(string $arende): void
+{
+    $value = preg_replace('/[^\p{L}\p{N} ]+/u', '', mb_substr($arende, 0, 60)) ?? '';
+
+    setcookie('elfix_lead', $value !== '' ? $value : '1', [
+        'expires' => time() + 120,
+        'path' => '/tack/',
+        'secure' => true,
+        'httponly' => false,
+        'samesite' => 'Lax',
+    ]);
+}
 
 /**
  * Bekräftar till besökaren att förfrågan kommit fram.
