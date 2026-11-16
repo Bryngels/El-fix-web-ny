@@ -52,12 +52,24 @@ export function TrackingRuntime() {
       return;
     }
 
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: "generate_lead",
+    const params = {
       form_location: "lead-form",
       lead_service: service === "1" ? undefined : service,
-    });
+    };
+
+    window.dataLayer = window.dataLayer || [];
+
+    // GA4 laddas med gtag.js (inte via GTM) och läser bara gtag-kommandon,
+    // inte vanliga dataLayer-objekt. Kommandot läggs i kön och skickas när
+    // gtag.js laddas – vilket bara sker med statistiksamtycke.
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    (function gtag(..._args: unknown[]) {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer?.push(arguments);
+    })("event", "generate_lead", params);
+
+    // Objektformen för GTM-taggar, om sådana läggs till senare.
+    window.dataLayer.push({ event: "generate_lead", ...params });
 
     // Finns fbq bara om besökaren sagt ja till marknadsföring. Utan
     // samtycke är den odefinierad och ingenting skickas till Meta.
